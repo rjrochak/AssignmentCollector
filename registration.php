@@ -22,7 +22,7 @@
         }
     </style>
   </head>
-  <body style="backgroud-image:url(bg img.jpg) !important;" >
+  <body style="backgroud-image:url('bg img.jpg') !important;" >
     <form action="#" method="POST">
   <section class="h-100 bg-dark">
   <div class="container py-5 h-100">
