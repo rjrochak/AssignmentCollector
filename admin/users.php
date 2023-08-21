@@ -56,7 +56,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Assignments
                             </a>
-                             
+                           
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -90,10 +90,10 @@
                                     <th>Email ID</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                     <th>password</th>&nbsp;&nbsp;
                                 </tr>
-                            </table>
+                        </table>
                                 <!-- <?php
                                 $query = "SELECT * FROM registertion";
-                                $data = mysqli_query($connect, "SELECT * from registration")
+                                $data = mysqli_query($connect,$query);
                                 if(mysqli_num_rows($data) != 0){
                                     while($result = mysqli_fetch_assoc($data)){
                                         echo "<tr>";
