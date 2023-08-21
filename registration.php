@@ -9,7 +9,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <title>Hello, world!</title>
+    <title>Student registration</title>
     <style>
                 .card-registration .select-input.form-control[readonly]:not([disabled]) {
         font-size: 1rem;
@@ -100,7 +100,7 @@
 
                     <select class="select" name="state" Required>
                       <option value="select state" >State</option>
-                      <option value="chh"  >chh</option>
+                      <option value="CG"  >CG</option>
                       <option value="3">Option 2</option>
                       <option value="4"  >Option 3</option>
                     </select>
@@ -127,7 +127,7 @@
                   <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
-<!-- 
+ 
                 <div class="form-outline mb-4">
                   <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
                   <option value="IT"  >IT</option>
@@ -212,7 +212,7 @@
                 });
             </script>';
        }
-       // header('location:login.php');
+        //header('location:login.php');
 
     }
 
