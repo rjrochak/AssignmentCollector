@@ -8,10 +8,11 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
+    
     <?php
 include("includes/header.php");
     ?>
-    
+  
  
     <?php
 include("includes/footer.php");
@@ -19,5 +20,6 @@ include("includes/footer.php");
 <script src="js/bootsrap.js"></script>
 <script src="js/custom.js"></script>
 <script src="js/popper.js"></script>
+
 </body>
 </html>
