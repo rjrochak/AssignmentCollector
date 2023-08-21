@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
@@ -24,7 +25,7 @@
   </head>
   <body  >
     <form action="#" method="POST">
-  <section class="h-100 bg-dark" style='background-image: url("../ASSIGNMENTCOLLECTOR/public/bg pex.jpg") !important;'>
+  <section class="h-100 bg-dark" >
   <div class="container py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100" >
       <div class="col">
@@ -33,7 +34,7 @@
             <div class="col-xl-6 d-none d-xl-block">
               <img src="../ASSIGNMENTCOLLECTOR/public/pex7.jpg"
                 alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; " />
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; width:100% !important;" />
       </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
@@ -100,9 +101,9 @@
 
                     <select class="select" name="state" Required>
                       <option value="select state" >State</option>
-                      <option value="CG"  >CG</option>
-                      <option value="3">Option 2</option>
-                      <option value="4"  >Option 3</option>
+                      <option value="Chhattisgarh"  >Chhattisgarh</option>
+                      <option value="Madhya Pradesh">Madhya Pradesh</option>
+                      <option value="Jharkhand"  > Jharkhand</option>
                     </select>
 
                   </div>
@@ -111,8 +112,8 @@
                     <select class="select" name="city" Required>
                       <option value="select city"  >City</option>
                       <option value="raipur"   >Raipur</option>
-                      <option value="3"   >Option 2</option>
-                      <option value="4"   >Option 3</option>
+                      <option value="Bilaspur"   >Bilaspur</option>
+                      <option value="Durg"   >Durg</option>
                     </select>
 
                   </div>
@@ -130,6 +131,7 @@
  
                 <div class="form-outline mb-4">
                   <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
+                  <option value="null"  ></option>
                   <option value="IT"  >IT</option>
                       <option value="Arts"   >Arts</option>
                       <option value="Commerce"   >Commerce </option>
@@ -143,6 +145,13 @@
                   <input type="text" id="form3Example97" class="form-control form-control-lg"  name="email_id" Required/>
                   <label class="form-label" for="form3Example97">Email ID</label>
                 </div>
+                <div class="form-outline mb-4">
+                  <input type="password" id="form3Example97" class="form-control form-control-lg"  name="password" Required />
+                  
+                 
+                  <label class="form-label" for="form3Example97">Password</label>
+                </div>
+
 
                 <div class="d-flex justify-content-end pt-3">
                 <button type="reset" class="btn btn-light btn-lg"> <a class="text-muted" href="login.php"> I have  Already Registered ! </a></button> &nbsp;
@@ -176,7 +185,7 @@
        $conn = mysqli_connect("localhost","root","","assignmentcollector");
 
         //inser query (insert into tablename )
-       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id')";
+       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password')";
 
         //run both query 
        $query = mysqli_query($conn, $data);
@@ -193,7 +202,7 @@
                   icon: "success",
                   confirmButtonText: "OK"
               });
-          </script>';
+    </script>';
 
        }
        else
@@ -212,7 +221,7 @@
                 });
             </script>';
        }
-        //header('location:login.php');
+       
 
     }
 
