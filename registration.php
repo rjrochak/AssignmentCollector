@@ -150,7 +150,10 @@
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button> 
+
+                  <button type="reset" class="btn btn-light btn-lg"> <a class="text-muted" href="login.php"> I have  Already Registered ! </a></button> 
+                 
+                  <button type="reset" class="btn btn-light btn-lg">Reset all</button> 
                   <input type="submit" name="submit" value="register" class="btn btn-warning btn-lg ms-2">
                 </div>
 
@@ -217,6 +220,7 @@
                 });
             </script>';
        }
+       // header('location:login.php');
 
     }
 
