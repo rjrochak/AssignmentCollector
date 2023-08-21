@@ -146,10 +146,11 @@
                   <label class="form-label" for="form3Example97">Email ID</label>
                 </div>
                 <div class="form-outline mb-4">
-                  <input type="password" id="form3Example97" class="form-control form-control-lg"  name="password" Required />
+                  <input type="password" id="myInput" class="form-control form-control-lg"  name="password" maxlength="6" minlength="6" Required />
                   
-                 
                   <label class="form-label" for="form3Example97">Password</label>
+                  <input type="checkbox" onclick="myFunction()" style="float:right; width: 20px; height: 16px; margin-top :2px;"><small style="float:right;">Show Password </small>
+                 
                 </div>
 
 
@@ -167,8 +168,17 @@
     </div>
   </div>
 </section>
-
-    
+     
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </form>
   </body>
