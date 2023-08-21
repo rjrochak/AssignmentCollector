@@ -34,7 +34,7 @@
               <img src="../ASSIGNMENTCOLLECTOR/public/pex7.jpg"
                 alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; " />
-            </div>
+      </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
                 <h3 class="mb-5 text-uppercase">Student registration form</h3>
@@ -100,7 +100,7 @@
 
                     <select class="select" name="state" Required>
                       <option value="select state" >State</option>
-                      <option value="chh"  >option1</option>
+                      <option value="chh"  >chh</option>
                       <option value="3">Option 2</option>
                       <option value="4"  >Option 3</option>
                     </select>
@@ -127,7 +127,7 @@
                   <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
-
+<!-- 
                 <div class="form-outline mb-4">
                   <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
                   <option value="IT"  >IT</option>
@@ -136,6 +136,8 @@
                  </select>
                   <label class="form-label" for="form3Example99">Course</label>
                 </div>
+
+
 
                 <div class="form-outline mb-4">
                   <input type="text" id="form3Example97" class="form-control form-control-lg"  name="email_id" Required/>
@@ -198,6 +200,19 @@
        {
          echo "ooppps something went wrong ! ";
        }
+       if ($query) {
+         // code...
+
+            echo '<script>
+                Swal.fire({
+                    title: "Success!",
+                    text: "Data is added successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
+            </script>';
+       }
+       // header('location:login.php');
 
     }
 

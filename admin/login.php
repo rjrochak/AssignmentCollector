@@ -1,6 +1,6 @@
 
 <?php
- require("datacon.php");
+ require("dbconnection.php");
          
 ?>
 
@@ -14,8 +14,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="img/style.css">
+    <link rel="stylesheet" href="css/style.css"> 
+    
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style type="text/css">
@@ -64,14 +64,14 @@
                   <p>Please login to your account</p>
 
                   <div class="form-outline mb-4">
-                    <input type="date" id="form2Example22" class="form-control" placeholder="Enter your DateofBirth" name="dob" required />
-                    <label class="form-label" for="form2Example22">Password</label>
-                  </div>
-
-                   <div class="form-outline mb-4">
                     <input type="email" id="form2Example11" class="form-control"
                       placeholder="Phone number or email address" name="email" required />
                     <label class="form-label" for="form2Example11">Phone number or email address</label>
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form2Example22" class="form-control" placeholder="password" name="password" required />
+                    <label class="form-label" for="form2Example22">Password</label>
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
@@ -79,7 +79,7 @@
                    <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" a href="studentDashboard.php" > 
                
 
-                      <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
+                      <a class="text-muted" href="#!"> <p class="mb-0 me-2">Forgot password?</p></a>
                    
                   </div>
 
@@ -88,7 +88,7 @@
                     <p class="mb-0 me-2">Don't have an account?</p>
                     
 
-                    <a href="registration.php" class="btn btn-outline-danger">Create new</a>
+                    <a href="register.php" class="btn btn-outline-danger">Create new</a>
 
 
                   </div>
@@ -128,10 +128,6 @@
         //database connection 
        $conn = mysqli_connect("localhost","root","","assignmentcollector");
 
-        //inser query (insert into tablename )
-       // $data = "INSERT into admin(username,email,password) VALUES('$phone','$email','$pwd')";
-
-
 
       $data =  "SELECT * from admin where(email='$email' and password='$password')";
 
@@ -144,7 +140,7 @@
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                header('location:studentDashboard.php');
+                header('location:adminDashboard.php');
                 echo "success";
 
             }else{

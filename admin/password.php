@@ -11,6 +11,9 @@
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
     </head>
     <body class="bg-primary">
+        <form action="#" method="POST">
+            
+        
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -27,7 +30,7 @@
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.html">Return to login</a>
+                                                <a class="small" href="">Return to login</a>
                                                 <a class="btn btn-primary" href="login.html">Reset Password</a>
                                             </div>
                                         </form>
@@ -58,5 +61,6 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+        </form>
     </body>
 </html>

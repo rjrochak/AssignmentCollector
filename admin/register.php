@@ -9,8 +9,10 @@
         <title>Register - SB Admin</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
     </head>
     <body class="bg-primary">
+        <form action="#" method="POST">
         <div id="layoutAuthentication">
             <div id="layoutAuthentication_content">
                 <main>
@@ -24,42 +26,43 @@
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name" />
+                                                        <input class="form-control" id="inputFirstName" type="text" placeholder="Enter your first name"  name="firstname"  required />
                                                         <label for="inputFirstName">First name</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating">
-                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" />
+                                                        <input class="form-control" id="inputLastName" type="text" placeholder="Enter your last name" name="lastname"  required />
                                                         <label for="inputLastName">Last name</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
+                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" name="email"  required />
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="row mb-3">
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" />
+                                                        <input class="form-control" id="inputPassword" type="password" placeholder="Create a password" name="pwd"  required />
                                                         <label for="inputPassword">Password</label>
                                                     </div>
                                                 </div>
                                                 <div class="col-md-6">
                                                     <div class="form-floating mb-3 mb-md-0">
-                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" />
+                                                        <input class="form-control" id="inputPasswordConfirm" type="password" placeholder="Confirm password" name="cpwd" required  />
                                                         <label for="inputPasswordConfirm">Confirm Password</label>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="mt-4 mb-0">
-                                                <div class="d-grid"><a class="btn btn-primary btn-block" href="login.html">Create Account</a></div>
+                                                <div class="d-grid"><a href="login.php"><input type="submit"class="btn btn-primary btn-block" name="submit" value="Create Account"></a></div>
+                                              
                                             </div>
                                         </form>
                                     </div>
                                     <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="login.html">Have an account? Go to login</a></div>
+                                        <div class="small"><a href="login.php">Have an account? Go to login</a></div>
                                     </div>
                                 </div>
                             </div>
@@ -84,5 +87,56 @@
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+    </form>
     </body>
 </html>
+
+
+
+  <?php
+    if ($_POST) {
+        //fetch data 
+       extract($_POST);
+
+        //database connection 
+       $conn = mysqli_connect("localhost","root","","assignmentcollector");
+
+        //inser query (insert into tablename )
+       $data = "INSERT into admin(first_name,last_name,email,password,c_password) VALUES('$firstname','$lastname','$email','$pwd','$cpwd')";
+
+        //run both query 
+       $query = mysqli_query($conn, $data);
+
+
+        //check status 
+       if ($query) {
+
+          // Display SweetAlert success message
+            //   echo '<script>
+            //     Swal.fire({
+            //         title: "Success!",
+            //         text: "Data is added successfully",
+            //         icon: "success",
+            //         confirmButtonText: "OK"
+            //     });
+            // </script>';
+        header('location:login.php');
+
+       }
+       else
+       {
+         echo "ooppps something went wrong ! ";
+       }
+        // Display SweetAlert success message
+              echo '<script>
+                Swal.fire({
+                    title: "Success!",
+                    text: "Your accaount is created successfully",
+                    icon: "success",
+                    confirmButtonText: "OK"
+                });
+            </script>';
+       }
+    ?>
+
+
