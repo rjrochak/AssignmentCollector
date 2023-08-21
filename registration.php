@@ -22,16 +22,16 @@
         }
     </style>
   </head>
-  <body style="backgroud-image:url('bg img.jpg') !important;" >
+  <body  >
     <form action="#" method="POST">
-  <section class="h-100 bg-dark">
-  <div class="container py-5 h-100">
-    <div class="row d-flex justify-content-center align-items-center h-100">
+  <section class="h-100 bg-dark" style='background-image: url("../ASSIGNMENTCOLLECTOR/public/bg pex.jpg") !important;'>
+  <div class="container py-5 h-100" >
+    <div class="row d-flex justify-content-center align-items-center h-100" >
       <div class="col">
         <div class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="pex7.jpg"
+              <img src="../ASSIGNMENTCOLLECTOR/public/pex7.jpg"
                 alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; " />
             </div>
@@ -42,13 +42,13 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1m" class="form-control form-control-lg" name="firstname" />
+                      <input type="text" id="form3Example1m"  class="form-control form-control-lg" name="first_name" Required />
                       <label class="form-label" for="form3Example1m">First name</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1n" class="form-control form-control-lg" name="lastname" />
+                      <input type="text" id="form3Example1n" class="form-control form-control-lg" name="last_name" Required />
                       <label class="form-label" for="form3Example1n">Last name</label>
                     </div>
                   </div>
@@ -57,20 +57,20 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" name="mname" />
+                      <input type="text" id="form3Example1m1" class="form-control form-control-lg" name="mother_name" Required />
                       <label class="form-label" for="form3Example1m1">Mother's name</label>
                     </div>
                   </div>
                   <div class="col-md-6 mb-4">
                     <div class="form-outline">
-                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" name="fname" />
+                      <input type="text" id="form3Example1n1" class="form-control form-control-lg" name="father_name" Required/>
                       <label class="form-label" for="form3Example1n1">Father's name</label>
                     </div>
                   </div>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" />
+                  <input type="text" id="form3Example8" class="form-control form-control-lg" name="address" Required/>
                   <label class="form-label" for="form3Example8">Address</label>
                 </div>
 
@@ -79,17 +79,17 @@
                   <h6 class="mb-0 me-4">Gender: </h6>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio"  id="femaleGender" value="female"  name="gender" />
+                    <input class="form-check-input" type="radio"  id="femaleGender" value="female"  name="gender" Required />
                     <label class="form-check-label" for="femaleGender">Female</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0 me-4">
-                    <input class="form-check-input" type="radio"  id="maleGender" value="male"  name="gender"/>
+                    <input class="form-check-input" type="radio"  id="maleGender" value="male"  name="gender" Required/>
                     <label class="form-check-label" for="maleGender">Male</label>
                   </div>
 
                   <div class="form-check form-check-inline mb-0">
-                    <input class="form-check-input" type="radio" id="otherGender" value="other" name="gender" />
+                    <input class="form-check-input" type="radio" id="otherGender" value="other" name="gender" Required />
                     <label class="form-check-label" for="otherGender">Other</label>
                   </div>
 
@@ -98,7 +98,7 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="state">
+                    <select class="select" name="state" Required>
                       <option value="select state" >State</option>
                       <option value="chh"  >option1</option>
                       <option value="3">Option 2</option>
@@ -108,7 +108,7 @@
                   </div>
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="city">
+                    <select class="select" name="city" Required>
                       <option value="select city"  >City</option>
                       <option value="raipur"   >Raipur</option>
                       <option value="3"   >Option 2</option>
@@ -119,17 +119,17 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="date" id="form3Example9" class="form-control form-control-lg"  name="dateofbirth" />
+                  <input type="date" id="form3Example9" class="form-control form-control-lg"  name="dob" Required/>
                   <label class="form-label" for="form3Example9">DOB</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" />
+                  <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" >
+                  <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
                   <option value="IT"  >IT</option>
                       <option value="Arts"   >Arts</option>
                       <option value="Commerce"   >Commerce </option>
@@ -138,13 +138,14 @@
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example97" class="form-control form-control-lg"  name="email" />
+                  <input type="text" id="form3Example97" class="form-control form-control-lg"  name="email_id" Required/>
                   <label class="form-label" for="form3Example97">Email ID</label>
                 </div>
 
                 <div class="d-flex justify-content-end pt-3">
-                  <button type="button" class="btn btn-light btn-lg">Reset all</button> 
-                  <input type="submit" name="submitform " value="Sign Up" class="btn btn-warning btn-lg ms-2">
+                <button type="reset" class="btn btn-light btn-lg"> <a class="text-muted" href="login.php"> I have  Already Registered ! </a></button> &nbsp;
+                  <button type="reset" class="btn btn-light btn-lg">Reset all</button> 
+                  <input type="submit" name="submitform " value="Sign Up" class="btn btn-warning btn-lg ms-2" >
                 </div>
 
               </div>
@@ -170,10 +171,10 @@
        extract($_POST);
 
         //database connection 
-       $conn = mysqli_connect("localhost","root","","AssignmentCollector");
+       $conn = mysqli_connect("localhost","root","","assignmentcollector");
 
         //inser query (insert into tablename )
-       $data = "INSERT into registration(firstname,lastname,mname,fname,address,gender,state,city,dateofbirth,pincode,course,email) VALUES('$firstname','$lastname','$mname', '$fname','$address','$gender','$state','$city','$dateofbirth','$pincode','$course','$email')";
+       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id')";
 
         //run both query 
        $query = mysqli_query($conn, $data);
@@ -183,7 +184,14 @@
        if ($query) {
 
           // Display SweetAlert success message
-              echo "good";
+              echo '<script>
+              Swal.fire({
+                  title: "Success!",
+                  text: "Data is added successfully",
+                  icon: "success",
+                  confirmButtonText: "OK"
+              });
+          </script>';
 
        }
        else
