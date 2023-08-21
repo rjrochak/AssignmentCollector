@@ -1,8 +1,9 @@
+
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <head>        
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -72,34 +73,50 @@
                                 DataTable Example
                             </div>
                             <div class="card-body">
-                                <table id="datatablesSimple">
-                                    <thead>
-                                        <tr>
-                                            <th>id</th>
-                                            <th>user_id</th>
-                                            <th>email</th>
-                                            <th>password</th>
-                                        </tr>
-                            </div>
-                        </div>
-                </main>
-                <?php
-                        $query = "SELECT * FROM admims";
-                        $data = mysqli_query($connect,$query);
-                        if(mysqli_num_rows($data) != 0){
-                            while($result = mysqli_fetch_assoc($data)){
-                                echo "<tr>";
-                                echo "<td>".$result['id']."</td>";
-                                echo "<td>".$result[' user_id']."</td>";
-                                echo "<td>".$result['email']."</td>";
-                                echo "<td>".$result['password']."</td>";
-                                echo '<td><a href="delete.php?id='.$result['id'].'">Delete</a>&nbsp&nbsp<a href="update.php?id='.$result['id'].'">Edit</a></td>';
-                                echo "</tr>";
-                            }
-                        }else {
-                            echo "something went wrong";
-                        }
-                        ?>
+                            <h1>List of Users</h1>
+                            <table>
+                                <tr>
+                                    <th>Id</th>&nbsp;&nbsp;&nbsp;
+                                    <th>First Name</th>&nbsp;&nbsp;
+                                    <th>Last name</th>&nbsp;&nbsp;
+                                    <th>Mother s</th>&nbsp;&nbsp;
+                                    <th> fahter'sname</th>&nbsp;&nbsp;
+                                    <th>Adderss</th>&nbsp;&nbsp;
+                                    <th>Gender</th>&nbsp;&nbsp;
+                                    <th>State</th>&nbsp;&nbsp;
+                                    <th>DOB</th>&nbsp;&nbsp;
+                                    <th>Pincode</th>&nbsp;&nbsp;
+                                    <th>course</th>&nbsp;&nbsp;
+                                    <th>Email ID</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <th>password</th>&nbsp;&nbsp;
+                                </tr>
+                            </table>
+                                <!-- <?php
+                                $query = "SELECT * FROM registertion";
+                                $data = mysqli_query($connect, "SELECT * from registration")
+                                if(mysqli_num_rows($data) != 0){
+                                    while($result = mysqli_fetch_assoc($data)){
+                                        echo "<tr>";
+                                        echo "<td>".$result['id']."</td>";
+                                        echo "<td>".$result['first_name']."</td>";
+                                        echo "<td>".$result['last_name']."</td>";
+                                        echo "<td>".$result['mother_name']."</td>";
+                                        echo "<td>".$result[' father_name']."</td>";
+                                        echo "<td>".$result['adderss']."</td>";
+                                        echo "<td>".$result['gender']."</td>";
+                                        echo "<td>".$result['state']."</td>";
+                                        echo "<td>".$result['dob']."</td>";
+                                        echo "<td>".$result['pincode']."</td>";
+                                        echo "<td>".$result['course']."</td>";
+                                        echo "<td>".$result['email_id']."</td>";
+                                        echo "<td>".$result["password"]."</td>";
+                                        echo "</tr>";
+                                    }
+                                }else {
+                                    echo "something went wrong";
+                                }
+        
+                        ?> -->
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -114,12 +131,6 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <script src="js/scripts.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+     
     </body>
 </html>
