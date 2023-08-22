@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -102,7 +104,7 @@
        $conn = mysqli_connect("localhost","root","","assignmentcollector");
 
         //inser query (insert into tablename )
-       $data = "INSERT into admin(first_name,last_name,email,password,c_password) VALUES('$firstname','$lastname','$email','$pwd','$cpwd')";
+       $data = "INSERT into admin(first_name,last_name,email,password) VALUES('$firstname','$lastname','$email','$pwd')";
 
         //run both query 
        $query = mysqli_query($conn, $data);
@@ -120,7 +122,7 @@
             //         confirmButtonText: "OK"
             //     });
             // </script>';
-        header('location:login.php');
+        //header('location:login.php');
 
        }
        else

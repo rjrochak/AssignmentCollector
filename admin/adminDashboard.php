@@ -1,4 +1,14 @@
 
+<?php
+        
+        session_start();
+        $id = $_SESSION['id'];
+        if(empty($id)){
+            header('location:login.php');
+            exit();
+        }
+         
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
