@@ -6,10 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
-    <title>Hello, world!</title>
+    <title>Student registration</title>
     <style>
                 .card-registration .select-input.form-control[readonly]:not([disabled]) {
         font-size: 1rem;
@@ -24,7 +25,7 @@
   </head>
   <body  >
     <form action="#" method="POST">
-  <section class="h-100 bg-dark" style='background-image: url("../ASSIGNMENTCOLLECTOR/public/bg pex.jpg") !important;'>
+  <section class="h-100 bg-dark" >
   <div class="container py-5 h-100" >
     <div class="row d-flex justify-content-center align-items-center h-100" >
       <div class="col">
@@ -33,7 +34,7 @@
             <div class="col-xl-6 d-none d-xl-block">
               <img src="../ASSIGNMENTCOLLECTOR/public/pex7.jpg"
                 alt="Sample photo" class="img-fluid"
-                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; " />
+                style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; width:100% !important;" />
       </div>
             <div class="col-xl-6">
               <div class="card-body p-md-5 text-black">
@@ -98,22 +99,20 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="state" Required>
-                      <option value="select state" >State</option>
-                      <option value="chh"  >chh</option>
-                      <option value="3">Option 2</option>
-                      <option value="4"  >Option 3</option>
-                    </select>
+                  <label for="state" >Select State:</label>
+               <select id="state" name="state" Required onchange="populateCities()">
+               <option value="select">Select</option>
+       
+                </select>
 
                   </div>
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="city" Required>
-                      <option value="select city"  >City</option>
-                      <option value="raipur"   >Raipur</option>
-                      <option value="3"   >Option 2</option>
-                      <option value="4"   >Option 3</option>
-                    </select>
+                  <label for="city" >Select City:</label>
+    <select id="city" name="city" Required>
+        <option value="select">Select</option>
+       
+    </select>
 
                   </div>
                 </div>
@@ -127,9 +126,10 @@
                   <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
-<!-- 
+ 
                 <div class="form-outline mb-4">
                   <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
+                  <option value="null"  ></option>
                   <option value="IT"  >IT</option>
                       <option value="Arts"   >Arts</option>
                       <option value="Commerce"   >Commerce </option>
@@ -143,6 +143,14 @@
                   <input type="text" id="form3Example97" class="form-control form-control-lg"  name="email_id" Required/>
                   <label class="form-label" for="form3Example97">Email ID</label>
                 </div>
+                <div class="form-outline mb-4">
+                  <input type="password" id="myInput" class="form-control form-control-lg"  name="password" maxlength="6" minlength="6" Required />
+                  
+                  <label class="form-label" for="form3Example97">Password</label>
+                  <input type="checkbox" onclick="myFunction()" style="float:right; width: 20px; height: 16px; margin-top :2px;"><small style="float:right;">Show Password </small>
+                 
+                </div>
+
 
                 <div class="d-flex justify-content-end pt-3">
                 <button type="reset" class="btn btn-light btn-lg"> <a class="text-muted" href="login.php"> I have  Already Registered ! </a></button> &nbsp;
@@ -158,8 +166,68 @@
     </div>
   </div>
 </section>
+<script>
+  // script.js
+const stateSelect = document.getElementById('state');
+const citySelect = document.getElementById('city');
 
+// Sample data for states and cities (you can replace this with your own data)
+const states = [
     
+    { name: 'Chhattisgarh', cities: ['Durg', 'Korba', 'Raipur'] },
+    { name: 'Madhya Pradesh', cities: ['Bhopal', 'Gwalior', 'Indore'] },
+    { name: 'Maharashtra', cities: ['Mumbai', 'Nagpur', 'Pune'] },
+    { name: 'Odisha', cities: ['Bhubaneshwar', 'Cuttack', 'Puri'] },
+];
+
+// Populate the state dropdown
+function populateStates() {
+    for (const state of states) {
+        const option = document.createElement('option');
+        option.value = state.name;
+        option.textContent = state.name;
+        stateSelect.appendChild(option);
+    }
+}
+
+// Populate the city dropdown based on the selected state
+function populateCities() {
+    const selectedState = stateSelect.value;
+    
+    // Clear existing city options
+    citySelect.innerHTML = '<option value="select">Select</option>';
+    
+    // Find the selected state in the data
+    const selectedStateData = states.find(state => state.name === selectedState);
+    
+    if (selectedStateData) {
+        for (const city of selectedStateData.cities) {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        }
+    }
+}
+
+// Initial population of the state dropdown
+populateStates();
+
+// Add an event listener to the state dropdown to populate cities when a state is selected
+stateSelect.addEventListener('change', populateCities);
+
+</script>
+     
+<script>
+function myFunction() {
+  var x = document.getElementById("myInput");
+  if (x.type === "password") {
+    x.type = "text";
+  } else {
+    x.type = "password";
+  }
+}
+</script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
     </form>
   </body>
@@ -176,7 +244,7 @@
        $conn = mysqli_connect("localhost","root","","assignmentcollector");
 
         //inser query (insert into tablename )
-       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id')";
+       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password')";
 
         //run both query 
        $query = mysqli_query($conn, $data);
@@ -193,7 +261,7 @@
                   icon: "success",
                   confirmButtonText: "OK"
               });
-          </script>';
+    </script>';
 
        }
        else
@@ -212,7 +280,7 @@
                 });
             </script>';
        }
-       // header('location:login.php');
+       
 
     }
 
