@@ -1,11 +1,11 @@
 <?php
-  
+require("../database.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -58,70 +58,81 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Assignments
                             </a>
-                           
+                             
                 </nav>
             </div>
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Users</h1>
+                        <h1 class="mt-4">Dashboard</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Users</li>
+                            <li class="breadcrumb-item active">Dashboard</li>
                         </ol>
                     </div>
-                    <div class="card mb-4">
-                            <div class="card-header">
-                                <i class="fas fa-table me-1"></i>
-                                DataTable Example
-                            </div>
-                            <div class="card-body">
-                            <h1>List of Users</h1>
-                            <table>
-                                <tr>
+                    <table id="datatablesSimple">
+                                <thead>
+                                    <tr>
                                     <th>Id</th>
                                     <th>First Name</th>
                                     <th>Last name</th>
-                                    <th>Mother s</th>
-                                    <th> fahter'sname</th>
+                                    <th>Mother's</th>
+                                    <th>fahter's name</th>
                                     <th>Adderss</th>
                                     <th>Gender</th>
                                     <th>State</th>
-                                    <th>DOB</th>&
+                                    <th>city</th>
+                                    <th>DOB</th>
                                     <th>Pincode</th>
                                     <th>course</th>
                                     <th>Email ID</th>
-                                    <th>password</th>
-                                </tr>
-                        </table>
-                                <!-- 
-                                    
+                                    </tr>
+                                </thead>
+                                <tfoot>
+                                    <tr>
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>Mother's</th>
+                                    <th>fahter's name</th>
+                                    <th>Adderss</th>
+                                    <th>Gender</th>
+                                    <th>State</th>
+                                    <th>city</th>
+                                    <th>DOB</th>
+                                    <th>Pincode</th>
+                                    <th>course</th>
+                                    <th>Email ID</th>
+                                    </tr>
+                                </tfoot>
+                                <tbody>
                                     <?php
-                              $query = "SELECT * FROM registertion";
-                              $data = mysqli_query($connect,$query);
-                              if(mysqli_num_rows($data) != 0){
-                                  while($result = mysqli_fetch_assoc($data)){
+                                    $query = "SELECT * FROM users";
+                                    $data = mysqli_query($connect,$query);
+                                    if(mysqli_num_rows($data) != 0){
+                                        while($result = mysqli_fetch_assoc($data)){
                                         echo "<tr>";
-                                        echo "<td>" . $row['id'] . "</td>";
-                                        echo "<td>" . $row['first_name'] . "</td>";
-                                        echo "<td>" . $row['id']."</td>";
-                                        echo "<td>" . $row['first_name']."</td>";
-                                        echo "<td>" . $row['last_name']."</td>";
-                                        echo "<td>" . $row['mother_name']."</td>";
-                                        echo "<td>" . $row[' father_name']."</td>";
-                                        echo "<td>" . $row['adderss']."</td>";
-                                        echo "<td>" . $row['gender']."</td>";
-                                        echo "<td>" . $row['state']."</td>";
-                                        echo "<td>" . $row['dob']."</td>";
-                                        echo "<td>" . $row['pincode']."</td>";
-                                        echo "<td>" . $row['course']."</td>";
-                                        echo "<td>" . $row['email_id']."</td>";
-                                        echo "<td>" . $row["password"]."</td>";
+                                        echo "<td>" . $result['id'] . "</td>";
+                                        echo "<td>" . $result['first_name'] . "</td>";
+                                        echo "<td>" . $result['last_name']."</td>";
+                                        echo "<td>" . $result['mother_name']."</td>";
+                                        echo "<td>" . $result['father_name']."</td>";
+                                        echo "<td>" . $result['address']."</td>";
+                                        echo "<td>" . $result['gender']."</td>";
+                                        echo "<td>" . $result['state']."</td>";
+                                        echo "<td>" . $result["city"]."</td>";
+                                        echo "<td>" . $result['dob']."</td>";
+                                        echo "<td>" . $result['pincode']."</td>";
+                                        echo "<td>" . $result['course']."</td>";
+                                        echo "<td>" . $result['email_id']."</td>";
                                         echo "</tr>";
                                     }
                                 }else {
                                     echo "something went wrong";
                                 }
-                        ?> -->
+                                    ?>
+                                </tbody>
+                    </table>
+                </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
                         <div class="d-flex align-items-center justify-content-between small">
@@ -136,5 +147,12 @@
                 </footer>
             </div>
         </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <script src="js/scripts.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>

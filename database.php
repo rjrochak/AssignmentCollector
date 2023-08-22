@@ -5,32 +5,10 @@
    	$server   = "localhost";
    	$username = "root";
    	$password = "";
-   	$db		  = "assignmentcollector";            //change database name to connect the mysql file
+   	$database = "assignmentcollector";           
 
 
-		$conn = mysqli_connect($server,$username,$password,$db);
+		$connect = mysqli_connect($server,$username,$password,$database);
 
-		if ($conn) 
-		{
-			// code...
-			 echo "Connection is Successfull";
-
-
-
-			?>
-			<script>
-				//alert("Connection is Successful.. ");
-			</script>
-			<?php 
-
-			
-		}
-		else
-		{
-			echo "Connection failed";
-
-		}
-
-
-
+ 
 ?>

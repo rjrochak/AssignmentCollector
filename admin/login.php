@@ -1,5 +1,5 @@
 <?php
-require("dbconnection.php");
+require("../database.php");
 ?>
 
 
@@ -8,7 +8,7 @@ require("dbconnection.php");
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>studentLogin</title>
+    <title>Admin Login</title>
     <link rel="stylesheet" href="css/bootstrap.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="img/style.css">
@@ -115,15 +115,14 @@ require("dbconnection.php");
  <?php
         if($_POST){
             extract($_POST);
-            $query = mysqli_query($conn,"SELECT * from admin where email='$email' and password='$password'");
+            $query = mysqli_query($connect,"SELECT * from admin where email='$email' and password='$pwd'");
             if(mysqli_num_rows($query)!= 0){
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                //header('location:data.php');
-                echo "ok"; 
-
-            }else{
+                header('location:adminDashboard.php');
+            }
+            else{
                 echo "invalid email and password";
             }
         }
