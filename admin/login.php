@@ -1,10 +1,6 @@
-
 <?php
- require("dbconnection.php");
-         
+require("dbconnection.php");
 ?>
-
-
 
 
 <!DOCTYPE html>
@@ -12,10 +8,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>studentLogin</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/style.css"> 
-    
+    <!-- <link rel="stylesheet" href="css/style.css"> -->
+    <link rel="stylesheet" type="text/css" href="img/style.css">
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style type="text/css">
@@ -60,37 +56,35 @@
                  
                 </div>
 
-                <form action="#" method="POST">
+                <form action="" method="POST">
                   <p>Please login to your account</p>
 
-                  <div class="form-outline mb-4">
+                  
+
+                   <div class="form-outline mb-4">
                     <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Phone number or email address" name="email" required />
-                    <label class="form-label" for="form2Example11">Phone number or email address</label>
+                      placeholder="Enter your Email" name="email"/>
+                    <!-- <label class="form-label" for="form2Example11">Enter your email</label> -->
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" placeholder="password" name="password" required />
-                    <label class="form-label" for="form2Example22">Password</label>
+                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd"/>
+                    <!-- <label class="form-label" for="form2Example22">Password</label> -->
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                 
-                   <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3" a href="studentDashboard.php" > 
+                   <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"> 
                
 
-                      <a class="text-muted" href="#!"> <p class="mb-0 me-2">Forgot password?</p></a>
+                      <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
                    
                   </div>
 
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
                     <p class="mb-0 me-2">Don't have an account?</p>
-                    
-
-                    <a href="register.php" class="btn btn-outline-danger">Create new</a>
-
-
+                    <a href="registration.php" class="btn btn-outline-danger">Create new</a>
                   </div>
 
                 </form>
@@ -118,33 +112,23 @@
 </html>
 
 
-
-
-  <?php
-    if ($_POST) {
-        //fetch data 
-       extract($_POST);
-
-        //database connection 
-       $conn = mysqli_connect("localhost","root","","assignmentcollector");
-
-
-      $data =  "SELECT * from admin where(email='$email' and password='$password')";
-
-        //run both query 
-       $query = mysqli_query($conn, $data);
-    
-
-     //check status
-       if(mysqli_num_rows($query)!= 0){
+ <?php
+        if($_POST){
+            extract($_POST);
+            $query = mysqli_query($conn,"SELECT * from admin where email='$email' and password='$password'");
+            if(mysqli_num_rows($query)!= 0){
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                header('location:adminDashboard.php');
-                echo "success";
+                //header('location:data.php');
+                echo "ok"; 
 
             }else{
                 echo "invalid email and password";
             }
         }
     ?>
+
+
+
+  

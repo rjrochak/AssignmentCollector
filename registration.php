@@ -126,7 +126,7 @@
                   <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
- 
+                
                 <div class="form-outline mb-4">
                   <select type="text" id="form3Example99" class="form-control form-control-lg" name="course" Required >
                   <option value="null"  ></option>
