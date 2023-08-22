@@ -1,5 +1,5 @@
 <?php
-    
+  
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -78,28 +78,28 @@
                             <h1>List of Users</h1>
                             <table>
                                 <tr>
-                                    <th>Id</th>&nbsp;&nbsp;&nbsp;
-                                    <th>First Name</th>&nbsp;&nbsp;
-                                    <th>Last name</th>&nbsp;&nbsp;
-                                    <th>Mother s</th>&nbsp;&nbsp;
-                                    <th> fahter'sname</th>&nbsp;&nbsp;
-                                    <th>Adderss</th>&nbsp;&nbsp;
-                                    <th>Gender</th>&nbsp;&nbsp;
-                                    <th>State</th>&nbsp;&nbsp;
-                                    <th>DOB</th>&nbsp;&nbsp;
-                                    <th>Pincode</th>&nbsp;&nbsp;
-                                    <th>course</th>&nbsp;&nbsp;
-                                    <th>Email ID</th>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                    <th>password</th>&nbsp;&nbsp;
+                                    <th>Id</th>
+                                    <th>First Name</th>
+                                    <th>Last name</th>
+                                    <th>Mother s</th>
+                                    <th> fahter'sname</th>
+                                    <th>Adderss</th>
+                                    <th>Gender</th>
+                                    <th>State</th>
+                                    <th>DOB</th>&
+                                    <th>Pincode</th>
+                                    <th>course</th>
+                                    <th>Email ID</th>
+                                    <th>password</th>
                                 </tr>
                         </table>
                                 <!-- 
                                     
                                     <?php
-                                $query = "SELECT * FROM `registertion'";
-                                $result = $conn->query($query);
-                                if($result->num_rows > 0){
-                                        while ($row = $result->fetch_assoc()) {
+                              $query = "SELECT * FROM registertion";
+                              $data = mysqli_query($connect,$query);
+                              if(mysqli_num_rows($data) != 0){
+                                  while($result = mysqli_fetch_assoc($data)){
                                         echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['first_name'] . "</td>";
@@ -111,8 +111,8 @@
                                         echo "<td>" . $row['adderss']."</td>";
                                         echo "<td>" . $row['gender']."</td>";
                                         echo "<td>" . $row['state']."</td>";
-                                        echo "<td>" . $$row['dob']."</td>";
-                                        echo "<td>" . $$row['pincode']."</td>";
+                                        echo "<td>" . $row['dob']."</td>";
+                                        echo "<td>" . $row['pincode']."</td>";
                                         echo "<td>" . $row['course']."</td>";
                                         echo "<td>" . $row['email_id']."</td>";
                                         echo "<td>" . $row["password"]."</td>";
