@@ -99,22 +99,20 @@
                 <div class="row">
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="state" Required>
-                      <option value="select state" >State</option>
-                      <option value="Chhattisgarh"  >Chhattisgarh</option>
-                      <option value="Madhya Pradesh">Madhya Pradesh</option>
-                      <option value="Jharkhand"  > Jharkhand</option>
-                    </select>
+                  <label for="state" >Select State:</label>
+               <select id="state" name="state" Required onchange="populateCities()">
+               <option value="select">Select</option>
+       
+                </select>
 
                   </div>
                   <div class="col-md-6 mb-4">
 
-                    <select class="select" name="city" Required>
-                      <option value="select city"  >City</option>
-                      <option value="raipur"   >Raipur</option>
-                      <option value="Bilaspur"   >Bilaspur</option>
-                      <option value="Durg"   >Durg</option>
-                    </select>
+                  <label for="city" >Select City:</label>
+    <select id="city" name="city" Required>
+        <option value="select">Select</option>
+       
+    </select>
 
                   </div>
                 </div>
@@ -168,6 +166,57 @@
     </div>
   </div>
 </section>
+<script>
+  // script.js
+const stateSelect = document.getElementById('state');
+const citySelect = document.getElementById('city');
+
+// Sample data for states and cities (you can replace this with your own data)
+const states = [
+    
+    { name: 'Chhattisgarh', cities: ['Durg', 'Korba', 'Raipur'] },
+    { name: 'Madhya Pradesh', cities: ['Bhopal', 'Gwalior', 'Indore'] },
+    { name: 'Maharashtra', cities: ['Mumbai', 'Nagpur', 'Pune'] },
+    { name: 'Odisha', cities: ['Bhubaneshwar', 'Cuttack', 'Puri'] },
+];
+
+// Populate the state dropdown
+function populateStates() {
+    for (const state of states) {
+        const option = document.createElement('option');
+        option.value = state.name;
+        option.textContent = state.name;
+        stateSelect.appendChild(option);
+    }
+}
+
+// Populate the city dropdown based on the selected state
+function populateCities() {
+    const selectedState = stateSelect.value;
+    
+    // Clear existing city options
+    citySelect.innerHTML = '<option value="select">Select</option>';
+    
+    // Find the selected state in the data
+    const selectedStateData = states.find(state => state.name === selectedState);
+    
+    if (selectedStateData) {
+        for (const city of selectedStateData.cities) {
+            const option = document.createElement('option');
+            option.value = city;
+            option.textContent = city;
+            citySelect.appendChild(option);
+        }
+    }
+}
+
+// Initial population of the state dropdown
+populateStates();
+
+// Add an event listener to the state dropdown to populate cities when a state is selected
+stateSelect.addEventListener('change', populateCities);
+
+</script>
      
 <script>
 function myFunction() {
