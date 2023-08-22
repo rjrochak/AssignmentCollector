@@ -1,4 +1,13 @@
-
+<?php
+        
+        session_start();
+        $id = $_SESSION['id'];
+        if(empty($id)){
+            header('location:login.php');
+            exit();
+        }
+         
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -130,3 +139,5 @@
         <script src="js/datatables-simple-demo.js"></script>
     </body>
 </html>
+
+
