@@ -1,6 +1,6 @@
- <?php
-    ..require (datacon.php)
- ?>
+<?php
+    
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>        
@@ -103,19 +103,19 @@
                                         echo "<tr>";
                                         echo "<td>" . $row['id'] . "</td>";
                                         echo "<td>" . $row['first_name'] . "</td>";
-                                        echo "<td>" .$row['id']."</td>";
-                                        echo "<td>" .$row['first_name']."</td>";
-                                        echo "<td>" .$row['last_name']."</td>";
-                                        echo "<td>" .$row['mother_name']."</td>";
-                                        echo "<td>" .$row[' father_name']."</td>";
-                                        echo "<td>" .$row['adderss']."</td>";
-                                        echo "<td>" .$row['gender']."</td>";
-                                        echo "<td>" .$row['state']."</td>";
-                                        echo "<td>" .$$row['dob']."</td>";
-                                        echo "<td>" .$$row['pincode']."</td>";
-                                        echo "<td>" .$row['course']."</td>";
-                                        echo "<td>" .$row['email_id']."</td>";
-                                        echo "<td>" .$row["password"]."</td>";
+                                        echo "<td>" . $row['id']."</td>";
+                                        echo "<td>" . $row['first_name']."</td>";
+                                        echo "<td>" . $row['last_name']."</td>";
+                                        echo "<td>" . $row['mother_name']."</td>";
+                                        echo "<td>" . $row[' father_name']."</td>";
+                                        echo "<td>" . $row['adderss']."</td>";
+                                        echo "<td>" . $row['gender']."</td>";
+                                        echo "<td>" . $row['state']."</td>";
+                                        echo "<td>" . $$row['dob']."</td>";
+                                        echo "<td>" . $$row['pincode']."</td>";
+                                        echo "<td>" . $row['course']."</td>";
+                                        echo "<td>" . $row['email_id']."</td>";
+                                        echo "<td>" . $row["password"]."</td>";
                                         echo "</tr>";
                                     }
                                 }else {
