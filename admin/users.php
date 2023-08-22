@@ -1,4 +1,6 @@
-
+ <?php
+    ..require (datacon.php)
+ ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>        
@@ -91,31 +93,34 @@
                                     <th>password</th>&nbsp;&nbsp;
                                 </tr>
                         </table>
-                                <!-- <?php
-                                $query = "SELECT * FROM registertion";
-                                $data = mysqli_query($connect,$query);
-                                if(mysqli_num_rows($data) != 0){
-                                    while($result = mysqli_fetch_assoc($data)){
+                                <!-- 
+                                    
+                                    <?php
+                                $query = "SELECT * FROM `registertion'";
+                                $result = $conn->query($query);
+                                if($result->num_rows > 0){
+                                        while ($row = $result->fetch_assoc()) {
                                         echo "<tr>";
-                                        echo "<td>".$result['id']."</td>";
-                                        echo "<td>".$result['first_name']."</td>";
-                                        echo "<td>".$result['last_name']."</td>";
-                                        echo "<td>".$result['mother_name']."</td>";
-                                        echo "<td>".$result[' father_name']."</td>";
-                                        echo "<td>".$result['adderss']."</td>";
-                                        echo "<td>".$result['gender']."</td>";
-                                        echo "<td>".$result['state']."</td>";
-                                        echo "<td>".$result['dob']."</td>";
-                                        echo "<td>".$result['pincode']."</td>";
-                                        echo "<td>".$result['course']."</td>";
-                                        echo "<td>".$result['email_id']."</td>";
-                                        echo "<td>".$result["password"]."</td>";
+                                        echo "<td>" . $row['id'] . "</td>";
+                                        echo "<td>" . $row['first_name'] . "</td>";
+                                        echo "<td>" .$row['id']."</td>";
+                                        echo "<td>" .$row['first_name']."</td>";
+                                        echo "<td>" .$row['last_name']."</td>";
+                                        echo "<td>" .$row['mother_name']."</td>";
+                                        echo "<td>" .$row[' father_name']."</td>";
+                                        echo "<td>" .$row['adderss']."</td>";
+                                        echo "<td>" .$row['gender']."</td>";
+                                        echo "<td>" .$row['state']."</td>";
+                                        echo "<td>" .$$row['dob']."</td>";
+                                        echo "<td>" .$$row['pincode']."</td>";
+                                        echo "<td>" .$row['course']."</td>";
+                                        echo "<td>" .$row['email_id']."</td>";
+                                        echo "<td>" .$row["password"]."</td>";
                                         echo "</tr>";
                                     }
                                 }else {
                                     echo "something went wrong";
                                 }
-        
                         ?> -->
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
@@ -131,6 +136,5 @@
                 </footer>
             </div>
         </div>
-     
     </body>
 </html>
