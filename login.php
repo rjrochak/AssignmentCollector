@@ -130,10 +130,10 @@
 
         //inser query (insert into tablename )
        // $data = "INSERT into admin(username,email,password) VALUES('$phone','$email','$pwd')";
+      $status = 1;
 
 
-
-      $data =  "SELECT * from admin where(email='$email' and password='$password')";
+      $data =  "SELECT * from admin where(email='$email' and password='$password' and status='$status')";
 
         //run both query 
        $query = mysqli_query($conn, $data);
