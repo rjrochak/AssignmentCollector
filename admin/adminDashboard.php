@@ -1,5 +1,5 @@
   <?php
-         //require("database.php");
+         require("../database.php");
   
          session_start();
          $id = $_SESSION['id'];
@@ -8,6 +8,12 @@
 
          exit();
           } 
+          $query = "SELECT * FROM users";
+          $data = mysqli_query($connect,$query);
+          $users_no =  mysqli_num_rows($data); 
+          
+ 
+           
   ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -53,11 +59,11 @@
             <div id="layoutSidenav_nav">
                 <nav class="sb-sidenav accordion sb-sidenav-dark" id="sidenavAccordion">
                     <div class="sb-sidenav-menu">
-                        <div class="nav">
-                            <div class="sb-sidenav-menu-heading"></div>
+                    <div class="nav">
+                            <div class="sb-sidenav-menu-heading">Core</div>
                             <a class="nav-link" href="adminDashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Admin Dashboard
+                                Dashboard
                             </a>
                             <a class="nav-link" href="users.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>

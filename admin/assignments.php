@@ -1,5 +1,5 @@
   <?php
-         require("database.php");
+         require("../database.php");
          session_start();
          $id = $_SESSION['id'];
          if(empty($id)){
@@ -74,6 +74,23 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Assignments</li>
                         </ol>
+                        <?php
+                      $query = "SELECT * FROM assignments";
+                      $data = mysqli_query($connect,$query);
+                      if(mysqli_num_rows($data) != 0){
+                          while($result = mysqli_fetch_assoc($data)){
+                            echo '<div class="card" style="width: 18rem; display:inline-block;">
+                              <img src="../public/pdf.jpg" class="card-img-top" alt="...">
+                            <div class="card-body">
+                                <h5 class="card-title">'.$result["title"].'</h5>
+                                <p class="card-text">'.$result["updated_at"].'</p>
+                                <a href="../'.$result["file"].'" class="btn btn-primary" donwload>Download</a>
+                            </div>
+                            </div>';
+                          
+                          }
+                        }
+                    ?>
 
                         
                 </main>
