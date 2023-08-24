@@ -144,12 +144,12 @@ session_start();
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="date" id="form3Example9" class="form-control form-control-lg"  name="dob" Required/>
+                  <input type="date" id="form3Example9" class="form-control form-control-lg"  name="dob" max="2022-12-31" Required/>
                   <label class="form-label" for="form3Example9">DOB</label>
                 </div>
 
                 <div class="form-outline mb-4">
-                  <input type="text" id="form3Example90" class="form-control form-control-lg" name="pincode" Required/>
+                  <input type="number" id="form3Example90" class="form-control form-control-lg" name="pincode" maxlength="6" minlength="6" Required/>
                   <label class="form-label" for="form3Example90">Pincode</label>
                 </div>
                 

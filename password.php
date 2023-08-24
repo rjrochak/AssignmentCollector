@@ -1,3 +1,28 @@
+<?php
+session_start();
+ $status = 0;
+   if($_POST){
+        extract($_POST); 
+        
+        $otp = rand(10000,99999);
+         //including send_email.php file in this file.
+        
+        $conn = mysqli_connect("localhost","root","","assignmentcollector"); 
+        $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password,otp,status) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password','$otp','$status')";
+
+        $query = mysqli_query($conn, $data);
+        if ($query){
+          include('resetemail.php');
+          $mail->send();
+          session_start();
+          $_SESSION['v_email'] = $vemail;
+          header("location:resetotp.php");
+            //  echo "data added successfully";
+        } else {
+            mysqli_error($query);
+        }
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -45,15 +70,7 @@
             <div id="layoutAuthentication_footer">
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
-                        <div class="d-flex align-items-center justify-content-between small">
-                            <div class="text-muted">Copyright &copy; Your Website 2023</div>
-                            <div>
-                                <a href="#">Privacy Policy</a>
-                                &middot;
-                                <a href="#">Terms &amp; Conditions</a>
-                            </div>
-                        </div>
-                    </div>
+                        
                 </footer>
             </div>
         </div>

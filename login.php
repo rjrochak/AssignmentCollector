@@ -41,110 +41,87 @@ require("database.php");
 
 </head>
 <body>
-  <form action="" method="POST">
-      <section class="h-100 gradient-form" style="background-color: #eee;">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-xl-10">
-              <div class="card rounded-3 text-black">
-                <div class="row g-0">
-                  <div class="col-lg-6">
-                    <div class="card-body p-md-5 mx-md-4">
+<section class="h-100 gradient-form" style="background-color: #eee;">
+  <div class="container py-5 h-100">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col-xl-10">
+        <div class="card rounded-3 text-black">
+          <div class="row g-0">
+            <div class="col-lg-6">
+              <div class="card-body p-md-5 mx-md-4">
 
-                      <div class="text-center">
-                        <img src="img/logo.jpg"
-                          style="width: 185px;" alt="logo">
-                       
-                      </div>
-                        <p>Please login to your account</p>
-
-                        
-
-                         <div class="form-outline mb-4">
-                          <input type="email" id="form2Example11" class="form-control"
-                            placeholder="Enter your Email" name="email"/>
-                          <!-- <label class="form-label" for="form2Example11">Enter your email</label> -->
-                        </div>
-
-                        <div class="form-outline mb-4">
-                          <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd"/>
-                          <!-- <label class="form-label" for="form2Example22">Password</label> -->
-                        </div>
-
-                        <div class="text-center pt-1 mb-5 pb-1">
-                      
-                         <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"> 
-                     
-
-                            <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
-                         
-                        </div>
-
-
-                        <div class="d-flex align-items-center justify-content-center pb-4">
-                          <p class="mb-0 me-2">Don't have an account?</p>
-                          <a href="registration.php" class="btn btn-outline-danger">Create new</a>
-                        </div>
-                    </div>
-                  </div>
-                  <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
-                    <div class="text-white px-3 py-4 p-md-5 mx-md-4">
-                      <h4 class="mb-4">We are more than just a company</h4>
-                      <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                        tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
-                        exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                  </div>
+                <div class="text-center">
+                  <img src="img/logo.jpg"
+                    style="width: 185px;" alt="logo">
+                 
                 </div>
+
+                <form action="" method="POST">
+                  <p>Please login to your account</p>
+
+                  
+
+                   <div class="form-outline mb-4">
+                    <input type="email" id="form2Example11" class="form-control"
+                      placeholder="Enter your Email" name="email"/>
+                    <!-- <label class="form-label" for="form2Example11">Enter your email</label> -->
+                  </div>
+
+                  <div class="form-outline mb-4">
+                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd"/>
+                    <!-- <label class="form-label" for="form2Example22">Password</label> -->
+                  </div>
+
+                  <div class="text-center pt-1 mb-5 pb-1">
+                
+                   <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"> 
+               
+
+                      <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
+                   
+                  </div>
+
+
+                  <div class="d-flex align-items-center justify-content-center pb-4">
+                    <p class="mb-0 me-2">Don't have an account?</p>
+                    <a href="registration.php" class="btn btn-outline-danger">Create new</a>
+                  </div>
+
+                </form>
+
+              </div>
+            </div>
+            <div class="col-lg-6 d-flex align-items-center gradient-custom-2">
+              <div class="text-white px-3 py-4 p-md-5 mx-md-4">
+                <h4 class="mb-4">We are more than just a company</h4>
+                <p class="small mb-0">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+                  tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud
+                  exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
               </div>
             </div>
           </div>
         </div>
-      </section>
-      <script src="js/bootsrap.js"></script>
-      <script src="js/custom.js"></script>
-      <script src="js/popper.js"></script>
-  </form>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="js/bootsrap.js"></script>
+<script src="js/custom.js"></script>
+<script src="js/popper.js"></script>
 </body>
 </html>
 
 
-<<<<<<< HEAD
  <?php
         if($_POST){
             extract($_POST);
             $query = mysqli_query($conn,"SELECT * from admin where email='$email' and password='$password'");
             if(mysqli_num_rows($query)!= 0){
-=======
-
-
-  <?php
-    if ($_POST) {
-        //fetch data 
-       extract($_POST);
-
-        //database connection 
-       $conn = mysqli_connect("localhost","root","","assignmentcollector");
-
-        //inser query (insert into tablename )
-       // $data = "INSERT into admin(username,email,password) VALUES('$phone','$email','$pwd')";
-      $status = 1;
-
-
-      $data =  "SELECT * from admin where(email='$email' and password='$password' and status='$status')";
-
-        //run both query 
-       $query = mysqli_query($conn, $data);
-    
-
-     //check status
-       if(mysqli_num_rows($query)!= 0){
->>>>>>> 9ff7ef940b203e0c54bb71c7dd681548a37f3df6
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                //header('location:data.php');
-                echo "ok"; 
+                header('location:otp.php');
+                // echo "ok"; 
 
             }else{
                 echo "invalid email and password";
