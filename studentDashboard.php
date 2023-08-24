@@ -2,13 +2,7 @@
         
         //require("database.php");
 
-        session_start();
-        $id = $_SESSION['id'];
-        if(empty($id)){
-            header('location:login.php');
-            exit();
-        }
-         
+ 
 ?>
 
 
