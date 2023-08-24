@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 22, 2023 at 11:27 AM
+-- Generation Time: Aug 24, 2023 at 12:14 PM
 -- Server version: 10.4.28-MariaDB
 -- PHP Version: 8.2.4
 
@@ -28,21 +28,11 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `admin` (
-  `id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
+  `id` int(30) NOT NULL,
+  `user_id` int(30) NOT NULL,
   `email` varchar(100) NOT NULL,
   `password` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Dumping data for table `admin`
---
-
-INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`) VALUES
-(1, 'ak ', 'sahu', 'ak123@gmail.com', '123'),
-(2, 'ak', 'sahu', 'ak12@gmail.com', '123'),
-(3, 'rahul ', 'sahu ', 'rahul12@gmail.com', '123');
 
 -- --------------------------------------------------------
 
@@ -51,7 +41,7 @@ INSERT INTO `admin` (`id`, `first_name`, `last_name`, `email`, `password`) VALUE
 --
 
 CREATE TABLE `assignments` (
-  `id` int(11) NOT NULL,
+  `id` int(30) NOT NULL,
   `user_id` int(30) NOT NULL,
   `file` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
@@ -63,7 +53,7 @@ CREATE TABLE `assignments` (
 --
 
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL,
+  `id` int(255) NOT NULL,
   `first_name` varchar(100) NOT NULL,
   `last_name` varchar(100) NOT NULL,
   `mother_name` varchar(100) NOT NULL,
@@ -76,27 +66,18 @@ CREATE TABLE `users` (
   `pincode` varchar(100) NOT NULL,
   `course` varchar(100) NOT NULL,
   `email_id` varchar(100) NOT NULL,
-  `password` varchar(100) NOT NULL
+  `password` varchar(100) NOT NULL,
+  `otp` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `users`
 --
 
-INSERT INTO `users` (`id`, `first_name`, `last_name`, `mother_name`, `father_name`, `address`, `gender`, `state`, `city`, `dob`, `pincode`, `course`, `email_id`, `password`) VALUES
-(1, 'ak', 'sahu', 'ss', 'dd', 'dd', 'male', 'Chhattisgarh', 'Durg', '2023-07-31 18:30:00', '4563211', 'Arts', 'ak123@gmail.com', '123456');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `verify_otp`
---
-
-CREATE TABLE `verify_otp` (
-  `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `otp` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+INSERT INTO `users` (`id`, `first_name`, `last_name`, `mother_name`, `father_name`, `address`, `gender`, `state`, `city`, `dob`, `pincode`, `course`, `email_id`, `password`, `otp`, `status`) VALUES
+(44, 'hima', 'bhwnumti', 'fukrey', 'faltu', 'fgfgg', 'female', 'Maharashtra', 'Nagpur', '2019-07-18 18:30:00', '467888', 'Arts', 'babban69billo@gmail.com', '098765', 1960, 0),
+(45, 'prajjwal', 'bhh', 'santa', 'uiooo', 'tsisvgy', 'male', 'Odisha', 'Puri', '2023-08-24 09:36:22', '467888', 'IT', 'himanshusahu1807@gmail.com', '098765', 7538, 1);
 
 --
 -- Indexes for dumped tables
@@ -121,12 +102,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `verify_otp`
---
-ALTER TABLE `verify_otp`
-  ADD PRIMARY KEY (`id`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -134,25 +109,19 @@ ALTER TABLE `verify_otp`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `assignments`
 --
 ALTER TABLE `assignments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(30) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- AUTO_INCREMENT for table `verify_otp`
---
-ALTER TABLE `verify_otp`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(255) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=46;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
