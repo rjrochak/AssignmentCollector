@@ -1,7 +1,21 @@
+
+<?php
+        
+        //require("database.php");
+
+        session_start();
+        $id = $_SESSION['id'];
+        if(empty($id)){
+            header('location:login.php');
+            exit();
+        }
+         
+?>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Upload File with User ID</title>
+    <title>Upload File with User ID, Title, and Data</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -12,7 +26,6 @@
             justify-content: center;
             align-items: center;
             height: 100vh;
-            background-color: lightgoldenrodyellow;
         }
 
         .container {
@@ -20,9 +33,7 @@
             border-radius: 5px;
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
-            width: 40%;
-            height: 60vh;
-
+            width: 600px;
         }
 
         .form-group {
@@ -35,16 +46,12 @@
         }
 
         input[type="text"],
-        input[type="file"] {
+        input[type="file"],
+        textarea {
             width: 95%;
             padding: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            align-content: center;
-
         }
 
         input[type="file"] {
@@ -67,11 +74,15 @@
 </head>
 <body>
     <div class="container">
-        <h2>Upload File with User ID</h2>
+        <h2>Upload File with User ID, Title, and Data</h2>
         <form method="post" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="userid">User ID:</label>
                 <input type="text" id="userid" name="userid" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" required>
             </div>
             <div class="form-group">
                 <label for="file">Upload File:</label>
@@ -82,3 +93,38 @@
     </div>
 </body>
 </html>
+
+
+
+<?php
+require('database.php');
+if($_POST){
+    $user_id = $_POST['userid'];
+    $title = $_POST['title'];
+
+    if (($_FILES['file']['name']!="")){
+        // Where the file is going to be stored
+            $target_dir = "public/";
+            $file = $_FILES['file']['name'];
+            $path = pathinfo($file);
+            $filename = $path['filename'];
+            $ext = $path['extension'];
+            $temp_name = $_FILES['file']['tmp_name'];
+            $path_filename_ext = $target_dir.$filename.".".$ext;
+            $status = move_uploaded_file($temp_name,$path_filename_ext);
+            if($status){
+                $insert = mysqli_query($conn,"INSERT into assignments(user_id,title,file) VALUES('$user_id','$title','$path_filename_ext')");
+                if($insert){
+                   
+                   // header('location:index.php');
+                  //  echo "Data Saved Successfully";
+                }else{
+                    echo "something went wrong";
+                }
+            }else{
+                echo $status;
+            }
+
+        }
+}
+?>
