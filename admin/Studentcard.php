@@ -1,6 +1,6 @@
 <?php
-        // require("database.php");
-        //  session_start();
+        require("../database.php"); 
+         session_start();
         // $id = $_SESSION['id'];
         // if(empty($id)){
         //     header('location:studentDashboard.php');
@@ -174,24 +174,24 @@
                                     <?php
                                     
                                     
-                                    // $sql = "SELECT * FROM `studentcard`;";
-                                    // $result = $connect->query($data);
-                                    // if ($result->num_rows != 0) {
-                                    //     while($row = $result->fetch_assoc()) {
-                                    //         echo "<tr>";
-                                    //         echo "<td>" . $row["id_"] . "</td>";
-                                    //         echo "<td>" . $row["user_id"] . "</td>";
-                                    //         echo "<td>" . $row["tilte"] . "</td>";
-                                    //         echo "<td>" . $row["file"] . "</td>";
-                                    //         echo "<td>" . $row["update_at"] . "</td>";
+                                    $query = "SELECT * FROM studentcard";
+                                    $data = mysqli_query($connect,$query);
+                                    if(mysqli_num_rows($data) != 0){
+                                        while($result = mysqli_fetch_assoc($data)){
+                                            echo "<tr>";
+                                            echo "<td>" . $result["id_"] . "</td>";
+                                            echo "<td>" . $result["user_id"] . "</td>";
+                                            echo "<td>" . $result["tilte"] . "</td>";
+                                            echo "<td>" . $result["file"] . "</td>";
+                                            echo "<td>" . $result["update_at"] . "</td>";
                                             
-                                    //         echo "</tr>";
-                                    //     }
-                                    // } else {
-                                    //     echo "<tr><td colspan='4'>No data available</td></tr>";
-                                    // }
+                                            echo "</tr>";
+                                        }
+                                    } else {
+                                        echo "<tr><td colspan='4'>No data available</td></tr>";
+                                    }
 
-                                    // $connect->close();
+                                    $connect->close();
                                     ?>
 
                                 </table>
