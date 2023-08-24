@@ -115,7 +115,7 @@ require("database.php");
  <?php
         if($_POST){
             extract($_POST);
-            $query = mysqli_query($conn,"SELECT * from admin where email='$email' and password='$password'");
+            $query = mysqli_query($connect,"SELECT * from users where email_id='$email' and password='$pwd'");
             if(mysqli_num_rows($query)!= 0){
                 $result = mysqli_fetch_assoc($query);
                 session_start();

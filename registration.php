@@ -38,7 +38,7 @@ session_start();
 
     <title>Student registration</title>
     <style>
-                .card-registration .select-input.form-control[readonly]:not([disabled]) {
+          .card-registration .select-input.form-control[readonly]:not([disabled]) {
         font-size: 1rem;
         line-height: 2.15;
         padding-left: .75em;
@@ -58,7 +58,7 @@ session_start();
         <div class="card card-registration my-4">
           <div class="row g-0">
             <div class="col-xl-6 d-none d-xl-block">
-              <img src="../ASSIGNMENTCOLLECTOR/public/pex7.jpg"
+              <img src="public/pex7.jpg"
                 alt="Sample photo" class="img-fluid"
                 style="border-top-left-radius: .25rem; border-bottom-left-radius: .25rem; height:100% !important; width:100% !important;" />
       </div>
