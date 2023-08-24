@@ -120,9 +120,10 @@ require("database.php");
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                header('location:studentDashboard.php');
-            }
-            else{
+                header('location:otp.php');
+                // echo "ok"; 
+
+            }else{
                 echo "invalid email and password";
             }
         }
