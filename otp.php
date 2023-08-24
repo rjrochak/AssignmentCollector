@@ -86,10 +86,3 @@
     </div>
 </body>
 </html>
-
-<!-- 
-        if ($_SERVER["REQUEST_METHOD"] === "POST") {
-            $mobile = $_POST["mobile"];
-            $otp = rand(100000, 999999);
-            echo "Your OTP is: " . $otp;
-        } -->

@@ -1,13 +1,14 @@
-   <?php
-         require("database.php");
-         session_start();
-         $id = $_SESSION['id'];
-         if(empty($id)){
-         header('location:adminlogin.php');
-         exit();
-          } 
-  ?>
-  
+<?php
+        // require("database.php");
+        //  session_start();
+        // $id = $_SESSION['id'];
+        // if(empty($id)){
+        //     header('location:studentDashboard.php');
+        //     exit();
+        // }
+         
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -16,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard </title>
+        <title>studentcard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -24,7 +25,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../onadmindashoard.php">Home</a>
+            <a class="navbar-brand ps-3" href="index.html">Start Bootstrap</a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -35,14 +36,14 @@
                 </div>
             </form>
             <!-- Navbar-->
-             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                         <li><a class="dropdown-item" href="#!">Settings</a></li>
                         <li><a class="dropdown-item" href="#!">Activity Log</a></li>
                         <li><hr class="dropdown-divider" /></li>
-                        <li><a class="dropdown-item" href="logout.php">Logout</a></li>
+                        <li><a class="dropdown-item" href="#!">Logout</a></li>
                     </ul>
                 </li>
             </ul>
@@ -122,14 +123,13 @@
                     <div class="container-fluid px-4">
                         <h1 class="mt-4">Tables</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item"><a href="index.html">Dashboard</a></li>
+                            <li class="breadcrumb-item"><a href="index.html">student dash board</a></li>
                             <li class="breadcrumb-item active">Tables</li>
                         </ol>
                         <div class="card mb-4">
                             <div class="card-body">
-                                DataTables is a third party plugin that is used to generate the demo table below. For more information about DataTables, please visit the
-                                <a target="_blank" href="https://datatables.net/">official DataTables documentation</a>
-                                .
+                                student id card informtion</a>
+                                
                             </div>
                         </div>
                         <div class="card mb-4">
@@ -141,30 +141,61 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                        <h1>List of Users</h1>
-                            <table>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>Last name</th>
-                                    <th>Mother s</th>
-                                    <th>fahter'sname</th>
-                                    <th>Adderss</th>
-                                    <th>Gender</th>
-                                    <th>State</th>
-                                    <th>DOB</th>
-                                    <th>Pincode</th>
-                                    <th>course</th>
-                                    <th>Email ID</th>
-                                    <th>password</th>
-                                </tr>
+                                            <th>id</th>
+                                            <th>user_id</th>
+                                            <th>tilte</th>
+                                            <th>file</th>
+                                            <th>update_at</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        
+                                        <tr>
+                                            <th>id</th>
+                                            <th>user_id</th>
+                                            <th>tilte</th>
+                                            <th>file</th>
+                                            <th>update_at</th>
+                                           
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                          
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                                    <?php
+                                    
+                                    
+                                    // $sql = "SELECT * FROM `studentcard`;";
+                                    // $result = $connect->query($data);
+                                    // if ($result->num_rows != 0) {
+                                    //     while($row = $result->fetch_assoc()) {
+                                    //         echo "<tr>";
+                                    //         echo "<td>" . $row["id_"] . "</td>";
+                                    //         echo "<td>" . $row["user_id"] . "</td>";
+                                    //         echo "<td>" . $row["tilte"] . "</td>";
+                                    //         echo "<td>" . $row["file"] . "</td>";
+                                    //         echo "<td>" . $row["update_at"] . "</td>";
+                                            
+                                    //         echo "</tr>";
+                                    //     }
+                                    // } else {
+                                    //     echo "<tr><td colspan='4'>No data available</td></tr>";
+                                    // }
+
+                                    // $connect->close();
+                                    ?>
+
+                                </table>
+
                             </div>
                         </div>
                     </div>
