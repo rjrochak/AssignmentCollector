@@ -115,16 +115,15 @@ require("database.php");
  <?php
         if($_POST){
             extract($_POST);
-            $query = mysqli_query($connect,"SELECT * from users where email_id='$email' and password='$pwd'");
+            $status = 1;
+            $query = mysqli_query($connect,"SELECT * from users where email_id='$email' and password='$pwd' and status='$status'");
             if(mysqli_num_rows($query)!= 0){
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];
-                header('location:otp.php');
-                // echo "ok"; 
-
+                header('location:student/studentDashboard.php');
             }else{
-                echo "invalid email and password";
+                echo "invalid email and password or already exist";
             }
         }
     ?>
