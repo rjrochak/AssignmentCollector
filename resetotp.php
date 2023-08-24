@@ -5,13 +5,13 @@
  if($_POST){
     extract($_POST);
     $data =  "SELECT * from users where(otp='$otp')";
-    $query = mysqli_query($conn, $data);
+    $query = mysqli_query($connect, $data);
     if(mysqli_num_rows($query)!=0){
         $result = mysqli_fetch_assoc($query);
         $id = $result['id'];
         $status = 1;
         $result1 = "UPDATE users SET status='$status' where id='$id'";
-        $query1 = mysqli_query($conn, $result1);
+        $query1 = mysqli_query($connect, $result1);
         if($query1){
             header('location:login.php');
         }else{

@@ -7,10 +7,10 @@ session_start();
         $otp = rand(1000,9999);
          //including send_email.php file in this file.
         
-        $conn = mysqli_connect("localhost","root","","assignmentcollector"); 
+        $connect = mysqli_connect("localhost","root","","assignmentcollector"); 
         $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password,otp,status) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password','$otp','$status')";
 
-        $query = mysqli_query($conn, $data);
+        $query = mysqli_query($connect, $data);
         if ($query){
           include('email.php');
           $mail->send();

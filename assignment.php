@@ -113,7 +113,7 @@ if($_POST){
             $path_filename_ext = $target_dir.$filename.".".$ext;
             $status = move_uploaded_file($temp_name,$path_filename_ext);
             if($status){
-                $insert = mysqli_query($conn,"INSERT into assignments(user_id,title,file) VALUES('$user_id','$title','$path_filename_ext')");
+                $insert = mysqli_query($connect,"INSERT into assignments(user_id,title,file) VALUES('$user_id','$title','$path_filename_ext')");
                 if($insert){
                    
                    // header('location:index.php');
