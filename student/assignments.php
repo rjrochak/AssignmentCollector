@@ -74,8 +74,6 @@
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Assignments</li>
                         </ol>
-
-                        
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">
