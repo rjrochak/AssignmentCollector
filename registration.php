@@ -1,3 +1,29 @@
+<?php
+session_start();
+ $status = 0;
+   if($_POST){
+        extract($_POST); 
+        
+        $otp = rand(1000,9999);
+         //including send_email.php file in this file.
+        
+        $conn = mysqli_connect("localhost","root","","assignmentcollector"); 
+        $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password,otp,status) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password','$otp','$status')";
+
+        $query = mysqli_query($conn, $data);
+        if ($query){
+          include('email.php');
+          $mail->send();
+          session_start();
+          $_SESSION['v_email'] = $vemail;
+          header("location:otp.php");
+            //  echo "data added successfully";
+        } else {
+            mysqli_error($query);
+        }
+    }
+    ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -235,54 +261,4 @@ function myFunction() {
  
 
 
-  <?php
-    if ($_POST) {
-        //fetch data 
-       extract($_POST);
-
-        //database connection 
-       $conn = mysqli_connect("localhost","root","","assignmentcollector");
-
-        //inser query (insert into tablename )
-       $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password')";
-
-        //run both query 
-       $query = mysqli_query($conn, $data);
-
-
-        //check status 
-       if ($query) {
-
-          // Display SweetAlert success message
-              echo '<script>
-              Swal.fire({
-                  title: "Success!",
-                  text: "Data is added successfully",
-                  icon: "success",
-                  confirmButtonText: "OK"
-              });
-    </script>';
-
-       }
-       else
-       {
-         echo "ooppps something went wrong ! ";
-       }
-       if ($query) {
-         // code...
-
-            echo '<script>
-                Swal.fire({
-                    title: "Success!",
-                    text: "Data is added successfully",
-                    icon: "success",
-                    confirmButtonText: "OK"
-                });
-            </script>';
-       }
-       
-
-    }
-
-
-    ?>
+  

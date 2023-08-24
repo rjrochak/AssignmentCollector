@@ -112,11 +112,37 @@ require("database.php");
 </html>
 
 
+<<<<<<< HEAD
  <?php
         if($_POST){
             extract($_POST);
             $query = mysqli_query($conn,"SELECT * from admin where email='$email' and password='$password'");
             if(mysqli_num_rows($query)!= 0){
+=======
+
+
+  <?php
+    if ($_POST) {
+        //fetch data 
+       extract($_POST);
+
+        //database connection 
+       $conn = mysqli_connect("localhost","root","","assignmentcollector");
+
+        //inser query (insert into tablename )
+       // $data = "INSERT into admin(username,email,password) VALUES('$phone','$email','$pwd')";
+      $status = 1;
+
+
+      $data =  "SELECT * from admin where(email='$email' and password='$password' and status='$status')";
+
+        //run both query 
+       $query = mysqli_query($conn, $data);
+    
+
+     //check status
+       if(mysqli_num_rows($query)!= 0){
+>>>>>>> 9ff7ef940b203e0c54bb71c7dd681548a37f3df6
                 $result = mysqli_fetch_assoc($query);
                 session_start();
                 $_SESSION['id'] = $result['id'];

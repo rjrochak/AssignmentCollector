@@ -1,3 +1,14 @@
+<?php
+        // require("database.php");
+        //  session_start();
+        // $id = $_SESSION['id'];
+        // if(empty($id)){
+        //     header('location:studentDashboard.php');
+        //     exit();
+        // }
+         
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -6,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Tables - SB Admin</title>
+        <title>studentcard</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
@@ -131,30 +142,61 @@
                                 <table id="datatablesSimple">
                                     <thead>
                                         <tr>
-                                        <h1>List of Users</h1>
-                            <table>
-                                <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>Last name</th>
-                                    <th>Mother s</th>
-                                    <th>fahter'sname</th>
-                                    <th>Adderss</th>
-                                    <th>Gender</th>
-                                    <th>State</th>
-                                    <th>DOB</th>
-                                    <th>Pincode</th>
-                                    <th>course</th>
-                                    <th>Email ID</th>
-                                    <th>password</th>
-                                </tr>
+                                            <th>id</th>
+                                            <th>user_id</th>
+                                            <th>tilte</th>
+                                            <th>file</th>
+                                            <th>update_at</th>
+                                            
                                         </tr>
                                     </thead>
                                     <tfoot>
-                                        
+                                        <tr>
+                                            <th>id</th>
+                                            <th>user_id</th>
+                                            <th>tilte</th>
+                                            <th>file</th>
+                                            <th>update_at</th>
+                                           
+                                        </tr>
+                                    </tfoot>
+                                    <tbody>
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                          
                                         </tr>
                                     </tbody>
                                 </table>
+                            </div>
+                                    <?php
+                                    
+                                    
+                                    // $sql = "SELECT * FROM `studentcard`;";
+                                    // $result = $connect->query($data);
+                                    // if ($result->num_rows != 0) {
+                                    //     while($row = $result->fetch_assoc()) {
+                                    //         echo "<tr>";
+                                    //         echo "<td>" . $row["id_"] . "</td>";
+                                    //         echo "<td>" . $row["user_id"] . "</td>";
+                                    //         echo "<td>" . $row["tilte"] . "</td>";
+                                    //         echo "<td>" . $row["file"] . "</td>";
+                                    //         echo "<td>" . $row["update_at"] . "</td>";
+                                            
+                                    //         echo "</tr>";
+                                    //     }
+                                    // } else {
+                                    //     echo "<tr><td colspan='4'>No data available</td></tr>";
+                                    // }
+
+                                    // $connect->close();
+                                    ?>
+
+                                </table>
+
                             </div>
                         </div>
                     </div>
