@@ -5,5 +5,5 @@ $password = "";
 $database = "assignmentcollector";   // change this name 
 
 
-$connect = mysqli_connect($hostname,$username,$password,$database);
+$conn = mysqli_connect($hostname,$username,$password,$database);
 ?>
