@@ -13,7 +13,7 @@
 		if ($conn) 
 		{
 			// code...
-			 echo "Connection is Successfull";
+			// echo "Connection is Successfull";
 
 
 

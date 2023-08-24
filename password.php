@@ -9,6 +9,7 @@
         <title>Password Reset - SB Admin</title>
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+         
     </head>
     <body class="bg-primary">
         <div id="layoutAuthentication">
@@ -28,7 +29,7 @@
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="login.php">Return to login</a>
-                                                <a class="btn btn-primary" href="#">Reset Password</a>
+                                                <a class="btn btn-primary" onclick="myFunction()">get password</a>
                                             </div>
                                         </form>
                                     </div>
@@ -56,7 +57,16 @@
                 </footer>
             </div>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
         <script src="js/scripts.js"></script>
+
+        <script>
+function myFunction() {
+  alert("your username and password has been send to your email account");
+}
+</script>
     </body>
 </html>
+
+
+
+
