@@ -7,12 +7,12 @@ session_start();
         $otp = rand(10000,99999);
          //including send_email.php file in this file.
         
-        $conn = mysqli_connect("localhost","root","","assignmentcollector"); 
+        $connect = mysqli_connect("localhost","root","","assignmentcollector"); 
         $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password,otp,status) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password','$otp','$status')";
 
-        $query = mysqli_query($conn, $data);
+        $query = mysqli_query($connect, $data);
         if ($query){
-          include('resetemail.php');
+          include('email.php');
           $mail->send();
           session_start();
           $_SESSION['v_email'] = $vemail;
@@ -54,7 +54,7 @@ session_start();
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
                                                 <a class="small" href="login.php">Return to login</a>
-                                                <a class="btn btn-primary" onclick="myFunction()">get password</a>
+                                                <a class="btn btn-primary" href="resetotp.php" >Reset password</a>
                                             </div>
                                         </form>
                                     </div>

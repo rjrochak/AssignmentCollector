@@ -106,13 +106,13 @@
        extract($_POST);
 
         //database connection 
-       $conn = mysqli_connect("localhost","root","","assignmentcollector");
+       $connect = mysqli_connect("localhost","root","","assignmentcollector");
 
         //inser query (insert into tablename )
        $data = "INSERT into admin(first_name,last_name,email,password) VALUES('$firstname','$lastname','$email','$pwd')";
 
         //run both query 
-       $query = mysqli_query($conn, $data);
+       $query = mysqli_query($connect, $data);
 
 
         //check status 
