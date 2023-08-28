@@ -174,7 +174,7 @@
                                     <?php
                                     
                                     
-                                    $query = "SELECT * FROM studentcard";
+                                    $query = "SELECT * FROM assignments";
                                     $data = mysqli_query($connect,$query);
                                     if(mysqli_num_rows($data) != 0){
                                         while($result = mysqli_fetch_assoc($data)){
