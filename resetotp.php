@@ -1,5 +1,5 @@
 <?php
- require("database.php");
+ $connect = mysqli_connect("localhost","root","","assignmentcollector"); 
  session_start();
  $vemail = $_SESSION['v_email'];
  if($_POST){
@@ -13,7 +13,9 @@
         $result1 = "UPDATE users SET status='$status' where id='$id'";
         $query1 = mysqli_query($connect, $result1);
         if($query1){
-            header('location:login.php');
+
+            header('location:newpassword.php');
+          //  echo "ok";
         }else{
             echo "something went wrong";
         }
@@ -29,37 +31,42 @@
     <title>OTP Verification</title>
     <style>
         body {
-            font-family: Arial, Helvetica, sans-serif;
-            text-align: center;
-            background-color: #007BFF;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #BEADFA;
         }
-        
+
         .container {
-            max-width: 400px;
+            width: 400px;
             margin: 0 auto;
             padding: 20px;
-            border: 1px solid #ccc;
+            background-color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
+            margin-top: 100px;
         }
-        
-        h1 {
-            font-size: 24px;
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
         }
-        
-        input[type="text"] {
+
+        form input[type="text"] {
             width: 90%;
+            height: 25px;
             padding: 10px;
-            margin: 10px 0;
+            margin-bottom: 10px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        
-        button {
-            background-color: #007BFF;
-            color: white;
-            padding: 10px 20px;
+
+        form button {
+            display: block;
+            width: 96%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
             border: none;
             border-radius: 3px;
             cursor: pointer;
@@ -68,12 +75,10 @@
 </head>
 <body>
     <div class="container" align="center">
-        <h1>OTP Verification</h1>
-        <p>Enter the OTP sent to your Email address.</p>
-        <form action="verify.php" method="post">
-            <input type="text" name="otp" placeholder="Enter OTP" required>
-            <br>
-            <button type="submit">Verify OTP</button>
+        <h2>OTP Verification</h2>
+        <form action="#" method="POST">
+            <input type="text" name="otp" placeholder="Enter your otp" required>
+            <button type="submit">Submit</button>
         </form>
     </div>
 </body>

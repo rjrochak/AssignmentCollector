@@ -1,7 +1,8 @@
   <?php
          require("../database.php");
          session_start();
-         $id = $_SESSION['id'];
+         $id = $_SESSION['user_id'];
+         $user_id =  $_SESSION['first_name'];
          if(empty($id)){
          header('location:adminlogin.php');
          exit();
@@ -15,15 +16,41 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Assignment Dashboard</title>
+        <title>Assignments</title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+        <style type="text/css">
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style for the filter input */
+#filterInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../onadmindashoard.php">Home</a>
+            <a class="navbar-brand ps-3" href="#">Welcome to <?php echo $user_id ?></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -34,7 +61,7 @@
                 </div>
             </form>
             <!-- Navbar-->
-            <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
+             <ul class="navbar-nav ms-auto ms-md-0 me-3 me-lg-4">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false"><i class="fas fa-user fa-fw"></i></a>
                     <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
@@ -60,7 +87,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Users
                             </a>
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="assignments.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
                                 Assignments
                             </a>
@@ -69,30 +96,54 @@
             </div>
             <div id="layoutSidenav_content">
                 <main>
-                    <div class="container-fluid px-4">
+                
+                       <div class="container-fluid px-4">
                         <h1 class="mt-4">Assignments</h1>
                         <ol class="breadcrumb mb-4">
                             <li class="breadcrumb-item active">Assignments</li>
                         </ol>
-                        <?php
-                      $query = "SELECT * FROM assignments";
-                      $data = mysqli_query($connect,$query);
-                      if(mysqli_num_rows($data) != 0){
-                          while($result = mysqli_fetch_assoc($data)){
-                            echo '<div class="card" style="width: 18rem; display:inline-block;">
-                              <img src="../public/pdf.jpg" class="card-img-top" alt="...">
-                            <div class="card-body">
-                                <h5 class="card-title">'.$result["title"].'</h5>
-                                <p class="card-text">'.$result["updated_at"].'</p>
-                                <a href="../'.$result["file"].'" class="btn btn-primary" donwload>Download</a>
-                            </div>
-                            </div>';
-                          
-                          }
-                        }
-                    ?>
+                        <input type="text" id="filterInput" placeholder="Filter by title...">
+                        <table id="dataTable">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>User ID</th>
+                                    <th>Title</th>
+                                    <th>File</th>
+                                    <th>Update_at</th>
+                                    <th colspan="2">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
 
-                        
+                                <!-- Data rows will be dynamically added here -->
+                                  <?php
+                                    $query = "SELECT * FROM assignments";
+                                    $data = mysqli_query($connect,$query);  
+                                    if(mysqli_num_rows($data) != 0){
+                                        while($result = mysqli_fetch_assoc($data)){
+                                        echo "<tr>";
+                                        echo "<td>" . $result['id'] . "</td>";
+                                        echo "<td>" . $result['user_id'] . "</td>";
+                                        echo "<td>" . $result['title']."</td>";
+                                        echo '<td><img src="'.$result['file'].'" alt="img" width="50px;"></td>';
+                                        echo "<td>" . $result['update_at']."</td>";
+
+                                        echo '<td><a href="../delete.php?id='.$result['id'].'"> <i class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;&nbsp';
+
+                                        echo '<td><a href="../update.php?id='.$result['id'].'"> <i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp';
+                                        echo "</tr>";
+
+                                
+                                    }
+                                }else {
+                                    echo "something went wrong";
+                                }
+                                    ?>
+                            </tbody>
+                        </table>
+                    </div>
+
                 </main>
                 <footer class="py-4 bg-light mt-auto">
                     <div class="container-fluid px-4">

@@ -1,89 +1,129 @@
 <?php
-session_start();
+ session_start();
  $status = 0;
-   if($_POST){
-        extract($_POST); 
-        
-        $otp = rand(10000,99999);
-         //including send_email.php file in this file.
-        
-        $connect = mysqli_connect("localhost","root","","assignmentcollector"); 
-        $data = "INSERT into users(first_name,last_name,mother_name,father_name,address,gender,state,city,dob,pincode,course,email_id,password,otp,status) VALUES('$first_name','$last_name','$mother_name', '$father_name','$address','$gender','$state','$city','$dob','$pincode','$course','$email_id','$password','$otp','$status')";
 
-        $query = mysqli_query($connect, $data);
-        if ($query){
-          include('email.php');
-          $mail->send();
-          session_start();
-          $_SESSION['v_email'] = $vemail;
-          header("location:resetotp.php");
-            //  echo "data added successfully";
-        } else {
-            mysqli_error($query);
-        }
-    }
-    ?>
+$connect = mysqli_connect("localhost","root","","assignmentcollector"); 
+
+$otp = rand(1000,9999);
+
+if(isset($_POST['submit'])) 
+{
+    $email = $_POST['email'];
+                   
+                   
+                    $data =  "SELECT * from users where(email='$email')";
+                     $query = mysqli_query($connect, $data);
+                        if(mysqli_num_rows($query)!=0)
+                        {
+                            $result = mysqli_fetch_assoc($query);
+                            $id = $result['id'];
+                            //$result1 = "UPDATE admin SET 'otp'='$otp','status'='$status' where id='$id'";
+                            $result1 = "UPDATE users SET `otp`='$otp', `status`='$status' WHERE id='$id'";
+
+                            $query1 = mysqli_query($connect, $result1);
+                                     if($query1){
+                                           include('email.php');
+                                          $mail->send();
+                                          session_start();
+                                          $_SESSION['v_email'] = $vemail;
+                                          header("location:resetotp.php");
+                                      }
+                                            
+                                        else
+                                        {
+                                            echo "something went wrong";
+                                        }
+              
+                        }
+                        else
+                           {
+                            echo " this email id is nor registered! ";
+                           }  
+             }
+        
+        
+?>
 <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Password Reset - SB Admin</title>
-        <link href="css/styles.css" rel="stylesheet" />
-        <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-         
-    </head>
-    <body class="bg-primary">
-        <div id="layoutAuthentication">
-            <div id="layoutAuthentication_content">
-                <main>
-                    <div class="container">
-                        <div class="row justify-content-center">
-                            <div class="col-lg-5">
-                                <div class="card shadow-lg border-0 rounded-lg mt-5">
-                                    <div class="card-header"><h3 class="text-center font-weight-light my-4">Password Recovery</h3></div>
-                                    <div class="card-body">
-                                        <div class="small mb-3 text-muted">Enter your email address and we will send you a link to reset your password.</div>
-                                        <form>
-                                            <div class="form-floating mb-3">
-                                                <input class="form-control" id="inputEmail" type="email" placeholder="name@example.com" />
-                                                <label for="inputEmail">Email address</label>
-                                            </div>
-                                            <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.php">Return to login</a>
-                                                <a class="btn btn-primary" href="resetotp.php" >Reset password</a>
-                                            </div>
-                                        </form>
-                                    </div>
-                                    <div class="card-footer text-center py-3">
-                                        <div class="small"><a href="registration.php">Need an account? Sign up!</a></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </main>
-            </div>
-            <div id="layoutAuthentication_footer">
-                <footer class="py-4 bg-light mt-auto">
-                    <div class="container-fluid px-4">
-                        
-                </footer>
-            </div>
-        </div>
-        <script src="js/scripts.js"></script>
+<html>
+<head>
+    <title>password change</title>
+     <style>  
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('01.jpg'); /* URL apni background image ke liye replace karein */
+            background-size: cover;
+            background-blur: 0.1px; /* Blur intensity adjust karein */
+        }
 
-        <script>
-function myFunction() {
-  alert("your username and password has been send to your email account");
-}
-</script>
-    </body>
+        h2 {
+            text-align: center;
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        form {
+            max-width: 400px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Transparent white background for form */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #fff;
+        }
+
+        input[type="email"],
+        input[type="password"] {
+            width: 90%;
+            padding: 10px;
+            margin-top: 20px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #218dbb;
+        }
+
+        p {
+            text-align: center;
+            margin-top: 20px;
+            color: #fff;
+        }
+
+        p a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <h2>password change..</h2>
+    <form method="post" action="">
+        <label>Email:</label>
+        <input type="email" name="email" required><br><br>
+        
+        <input type="submit" name="submit" value="submit">
+        <a class="text-muted" href="login.php"> <p class="mb-0 me-2">Login ?</p></a>
+    </form>
+</body>
 </html>
-
-
-
-

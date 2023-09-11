@@ -1,8 +1,16 @@
+
 <?php
         
-        //require("database.php");
+        require('../database.php');
 
- 
+        session_start();
+        $id = $_SESSION['id'];
+        $name = $_SESSION['full_name'];  
+        if(empty($id)){
+            header('location:../login.php');
+            exit();
+        }
+         
 ?>
 
 
@@ -23,7 +31,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="ondashboard.php">Home</a>
+            <a class="navbar-brand ps-3" href="#"> Welcome to <?php echo $name ?></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -52,14 +60,22 @@
                     <div class="sb-sidenav-menu">
                         <div class="nav">
                             <div class="sb-sidenav-menu-heading"></div>
-                         
-                            <a class="nav-link" href="#">
+                              <a class="nav-link" href="studentDashboard.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                Users Profile
+                                Dashboard
                             </a>
-                            <a class="nav-link" href="#">
+                         
+                            <a class="nav-link" href="userprofile.php">
                                 <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
-                                User Assignments
+                                My Profile
+                            </a>
+                             <a class="nav-link" href="myassignment.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                MY Assignments 
+                            </a>
+                            <a class="nav-link" href="assignment.php">
+                                <div class="sb-nav-link-icon"><i class="fas fa-tachometer-alt"></i></div>
+                                 Assignments Uploade
                             </a>
                              
                 </nav>
@@ -74,9 +90,9 @@
                         <div class="row">
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-primary text-white mb-4">
-                                    <div class="card-body">Primary Card</div>
+                                    <div class="card-body">My Profile </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="userprofile.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
@@ -85,9 +101,9 @@
 
                             <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
+                                    <div class="card-body">My Assignments  </div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="myassignment.php">View Details</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>

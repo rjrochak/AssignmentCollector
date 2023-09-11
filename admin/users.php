@@ -1,6 +1,13 @@
-<?php
-require("../database.php");
-?>
+  <?php
+         require("../database.php");
+         session_start();
+         $id = $_SESSION['user_id'];
+         $user_id =  $_SESSION['first_name'];
+         if(empty($id)){
+         header('location:adminlogin.php');
+         exit();
+          } 
+  ?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -9,15 +16,41 @@ require("../database.php");
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Dashboard </title>
+        <title>Users </title>
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/styles.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
+           <style type="text/css">
+
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+/* Style for the filter input */
+#filterInput {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+}
+
+
+        </style>
     </head>
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../onadmindashoard.php">Home</a>
+            <a class="navbar-brand ps-3" href="#">Welcome to <?php echo $user_id ?></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -64,66 +97,57 @@ require("../database.php");
             <div id="layoutSidenav_content">
                 <main>
                     <div class="container-fluid px-4">
-                        <h1 class="mt-4">Dashboard</h1>
+                        <h1 class="mt-4">Users</h1>
                         <ol class="breadcrumb mb-4">
-                            <li class="breadcrumb-item active">Dashboard</li>
+                            <li class="breadcrumb-item active">Users</li> 
+
                         </ol>
+                        <input type="text" id="filterInput" placeholder="Filter by title...">
                     </div>
                     <table id="datatablesSimple">
                                 <thead>
                                     <tr>
+
                                     <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>Last name</th>
-                                    <th>Mother's</th>
-                                    <th>fahter's name</th>
-                                    <th>Adderss</th>
-                                    <th>Gender</th>
-                                    <th>State</th>
-                                    <th>city</th>
-                                    <th>DOB</th>
-                                    <th>Pincode</th>
+                                    <th>full_name</th>
+                                    <th>father_name</th>
+                                    <th>gender</th>
+                                    <th>dob</th>
+                                    <th>email</th>
+                                    <th>phone</th>
                                     <th>course</th>
-                                    <th>Email ID</th>
+                                    <th>addres</th>
+                                    <th>pincode</th>
+                                    <th>photo</th>
+                                    <th colspan="3">action</th>
+                                    
                                     </tr>
                                 </thead>
-                                <tfoot>
-                                    <tr>
-                                    <th>Id</th>
-                                    <th>First Name</th>
-                                    <th>Last name</th>
-                                    <th>Mother's</th>
-                                    <th>fahter's name</th>
-                                    <th>Adderss</th>
-                                    <th>Gender</th>
-                                    <th>State</th>
-                                    <th>city</th>
-                                    <th>DOB</th>
-                                    <th>Pincode</th>
-                                    <th>course</th>
-                                    <th>Email ID</th>
-                                    </tr>
-                                </tfoot>
                                 <tbody>
                                     <?php
                                     $query = "SELECT * FROM users";
-                                    $data = mysqli_query($connect,$query);
+                                    $data = mysqli_query($connect,$query);  
                                     if(mysqli_num_rows($data) != 0){
                                         while($result = mysqli_fetch_assoc($data)){
                                         echo "<tr>";
                                         echo "<td>" . $result['id'] . "</td>";
-                                        echo "<td>" . $result['first_name'] . "</td>";
-                                        echo "<td>" . $result['last_name']."</td>";
-                                        echo "<td>" . $result['mother_name']."</td>";
+                                        echo "<td>" . $result['full_name'] . "</td>";
                                         echo "<td>" . $result['father_name']."</td>";
-                                        echo "<td>" . $result['address']."</td>";
                                         echo "<td>" . $result['gender']."</td>";
-                                        echo "<td>" . $result['state']."</td>";
-                                        echo "<td>" . $result["city"]."</td>";
                                         echo "<td>" . $result['dob']."</td>";
-                                        echo "<td>" . $result['pincode']."</td>";
+                                        echo "<td>" . $result['email']."</td>";
+                                        echo "<td>" . $result['phone']."</td>";
                                         echo "<td>" . $result['course']."</td>";
-                                        echo "<td>" . $result['email_id']."</td>";
+                                        echo "<td>" . $result["addres"]."</td>";
+                                        echo "<td>" . $result['pincode']."</td>";
+                                        echo '<td><img src="'.$result['file'].'" alt="img" width="50px;"></td>';
+
+                                        echo '<td><a href="#?id='.$result['id'].'"> <i class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;&nbsp';
+
+                                        echo '<td><a href="../update.php?id='.$result['id'].'"> <i class="fa-solid fa-pen-to-square"></i></a>&nbsp;&nbsp;&nbsp';
+
+
+                                        echo  '<td><a href="../email.php?email='.$result["email"].'&name='.$result["full_name"].'"><i class="fa-solid fa-envelope"></i></a></td></tr>'; 
                                         echo "</tr>";
                                     }
                                 }else {

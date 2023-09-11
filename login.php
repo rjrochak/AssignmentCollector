@@ -1,6 +1,77 @@
-<?php
-require("database.php");
-?>
+
+  <?php
+  session_start();
+
+   //database connection 
+ require("database.php");
+
+        if($_POST)
+        {
+            // extract($_POST);
+
+            $email = $_POST['email'];
+            $firstpassword = $_POST['pwd'];
+            $status = 1;
+
+           $query = mysqli_query($connect,"SELECT * from users where email='$email' and status=$status");
+            if(mysqli_num_rows($query)!= 0)
+
+            {
+                $result = mysqli_fetch_assoc($query);
+                 $password = $result['password'];
+
+                 $pass_decode = password_verify($firstpassword,$password);
+                 if ($pass_decode) 
+                 {
+                     if (isset($_POST['rememberme'])) {
+                         // code...
+                        setcookie('emailcookie',$email,time()+86400);    //full_name
+                        setcookie('passwordcookie',$firstpassword,time()+86400);
+
+    
+                       $_SESSION['id'] = $result['id'];
+                       $_SESSION['full_name'] = $result['full_name'];
+                       header('location:student/studentDashboard.php');
+                     }
+                     else
+                     {
+                        
+                        $_SESSION['id'] = $result['id'];
+                        $_SESSION['full_name'] = $result['full_name'];
+                        
+                         header('location:student/studentDashboard.php');
+                      
+                     }
+                      
+                        
+                         echo '<script>
+                        alert("login sussccefully");
+                    </script>';
+
+                   
+
+                 }else
+                    { 
+                      echo '<script>
+                        alert(" password is incurect");
+                    </script>';
+
+                    }
+
+              
+            }
+            else{
+              echo '<script>
+                        alert("This Email id is not Registered ! ");
+                    </script>';
+              
+            }
+            
+        }
+    ?>
+
+
+
 
 
 <!DOCTYPE html>
@@ -38,7 +109,6 @@ require("database.php");
         }
         }
     </style>
-
 </head>
 <body>
 <section class="h-100 gradient-form" style="background-color: #eee;">
@@ -51,7 +121,7 @@ require("database.php");
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="img/logo.jpg"
+                  <img src="public/logo.jpg"
                     style="width: 185px;" alt="logo">
                  
                 </div>
@@ -63,14 +133,18 @@ require("database.php");
 
                    <div class="form-outline mb-4">
                     <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Enter your Email" name="email"/>
+                      placeholder="Enter your Email" name="email" required />
                     <!-- <label class="form-label" for="form2Example11">Enter your email</label> -->
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd"/>
+                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd" required />
                     <!-- <label class="form-label" for="form2Example22">Password</label> -->
                   </div>
+                   <div class="remember-me">
+                                        <input type="checkbox" name="rememberme" id="rememberme">
+                                        <label for="rememberme" class="form-check-label">Remember me</label>
+                                    </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                 
@@ -78,6 +152,7 @@ require("database.php");
                
 
                       <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
+
                    
                   </div>
 
@@ -110,24 +185,3 @@ require("database.php");
 <script src="js/popper.js"></script>
 </body>
 </html>
-
-
- <?php
-        if($_POST){
-            extract($_POST);
-            $status = 1;
-            $query = mysqli_query($connect,"SELECT * from users where email_id='$email' and password='$pwd' and status='$status'");
-            if(mysqli_num_rows($query)!= 0){
-                $result = mysqli_fetch_assoc($query);
-                session_start();
-                $_SESSION['id'] = $result['id'];
-                header('location:student/studentDashboard.php');
-            }else{
-                echo "invalid email and password or already exist";
-            }
-        }
-    ?>
-
-
-
-  

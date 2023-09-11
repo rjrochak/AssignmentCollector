@@ -1,8 +1,72 @@
-<?php
-require("../database.php");
-?>
+  <?php
+  session_start();
 
+   //database connection 
+    require("../database.php");
 
+        if($_POST)
+        {
+            // extract($_POST);
+
+            $email = $_POST['email'];
+            $firstpassword = $_POST['pwd'];
+            $status = 1;
+
+           $query = mysqli_query($connect,"SELECT * from admin where email='$email' and status=$status");
+            if(mysqli_num_rows($query)!= 0)
+
+            {
+                $result = mysqli_fetch_assoc($query);
+                 $password = $result['password'];
+
+                 $pass_decode = password_verify($firstpassword,$password);
+                 if ($pass_decode) 
+                 {
+                     if (isset($_POST['rememberme'])) {
+                         // code...
+                        setcookie('emailcookie',$email,time()+86400);
+                        setcookie('passwordcookie',$firstpassword,time()+86400);
+
+    
+                       $_SESSION['user_id'] = $result['user_id'];
+                       $_SESSION['first_name'] = $result['first_name'];
+                       header('location:adminDashboard.php');
+                     }
+                     else
+                     {
+                        
+                        $_SESSION['user_id'] = $result['user_id'];
+                        $_SESSION['first_name'] = $result['first_name'];
+                         header('location:adminDashboard.php');
+                      
+                     }
+                      
+                        
+                         echo '<script>
+                        alert("login sussccefully");
+                    </script>';
+
+                   
+
+                 }else
+                    { 
+                      echo '<script>
+                        alert(" password is incurect");
+                    </script>';
+
+                    }
+
+              
+            }
+            else{
+              echo '<script>
+                        alert("This Email id is not Registered ! ");
+                    </script>';
+              
+            }
+            
+        }
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -63,21 +127,26 @@ require("../database.php");
 
                    <div class="form-outline mb-4">
                     <input type="email" id="form2Example11" class="form-control"
-                      placeholder="Enter your Email" name="email"/>
+                      placeholder="Enter your Email" name="email" required />
                     <!-- <label class="form-label" for="form2Example11">Enter your email</label> -->
                   </div>
 
                   <div class="form-outline mb-4">
-                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd"/>
+                    <input type="password" id="form2Example22" class="form-control" placeholder="Enter your password" name="pwd" required />
                     <!-- <label class="form-label" for="form2Example22">Password</label> -->
                   </div>
+                   <div class="remember-me">
+                                        <input type="checkbox" name="rememberme" id="rememberme">
+                                        <label for="rememberme" class="form-check-label">Remember me</label>
+                                    </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
                 
                    <input type="submit" name="submit" value="Login" class="btn btn-primary btn-block fa-lg gradient-custom-2 mb-3"> 
                
 
-                      <a class="text-muted" href="password.php"> <p class="mb-0 me-2">Forgot password?</p></a>
+                      <a class="text-muted" href="recovery.php"> <p class="mb-0 me-2">Forgot password?</p></a>
+
                    
                   </div>
 
@@ -110,24 +179,3 @@ require("../database.php");
 <script src="js/popper.js"></script>
 </body>
 </html>
-
-
- <?php
-        if($_POST){
-            extract($_POST);
-            $query = mysqli_query($connect,"SELECT * from admin where email='$email' and password='$pwd'");
-            if(mysqli_num_rows($query)!= 0){
-                $result = mysqli_fetch_assoc($query);
-                session_start();
-                $_SESSION['id'] = $result['id'];
-                header('location:adminDashboard.php');
-            }
-            else{
-                echo "invalid email and password";
-            }
-        }
-    ?>
-
-
-
-  

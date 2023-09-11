@@ -2,19 +2,26 @@
          require("../database.php");
   
          session_start();
-         $id = $_SESSION['id'];
+         $id = $_SESSION['user_id'];
+         $user_id =  $_SESSION['first_name'];
          if(empty($id)){
          header('location:adminlogin.php');
 
          exit();
           } 
-          $query = "SELECT * FROM users";
-          $data = mysqli_query($connect,$query);
-          $users_no =  mysqli_num_rows($data); 
+           $query = "SELECT * FROM users";
+           $data = mysqli_query($connect,$query);
+           $users_no =  mysqli_num_rows($data); 
+
+
+            $query = "SELECT * FROM assignments";
+           $data = mysqli_query($connect,$query);
+           $assignments_no =  mysqli_num_rows($data); 
           
  
            
   ?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -32,7 +39,7 @@
     <body class="sb-nav-fixed">
         <nav class="sb-topnav navbar navbar-expand navbar-dark bg-dark">
             <!-- Navbar Brand-->
-            <a class="navbar-brand ps-3" href="../onadmindashoard.php">Home</a>
+            <a class="navbar-brand ps-3" href="#">Welcome to <?php echo $user_id ?></a>
             <!-- Sidebar Toggle-->
             <button class="btn btn-link btn-sm order-1 order-lg-0 me-4 me-lg-0" id="sidebarToggle" href="#!"><i class="fas fa-bars"></i></button>
             <!-- Navbar Search-->
@@ -97,28 +104,12 @@
                                 </div>
                             </div>
                             <div class="col-xl-3 col-md-6">
-                                <div class="card bg-warning text-white mb-4">
-                                    <div class="card-body">Warning Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
                                 <div class="card bg-success text-white mb-4">
-                                    <div class="card-body">Success Card</div>
+                                    <div class="card-body"><?php
+                                    echo   $assignments_no;
+                                    ?></div>
                                     <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
-                                        <div class="small text-white"><i class="fas fa-angle-right"></i></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-xl-3 col-md-6">
-                                <div class="card bg-danger text-white mb-4">
-                                    <div class="card-body">Danger Card</div>
-                                    <div class="card-footer d-flex align-items-center justify-content-between">
-                                        <a class="small text-white stretched-link" href="#">View Details</a>
+                                        <a class="small text-white stretched-link" href="assignments.php">Number of Assignments_no</a>
                                         <div class="small text-white"><i class="fas fa-angle-right"></i></div>
                                     </div>
                                 </div>
