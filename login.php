@@ -51,7 +51,7 @@ require("database.php");
               <div class="card-body p-md-5 mx-md-4">
 
                 <div class="text-center">
-                  <img src="img/logo.jpg"
+                  <img src="public/logo.jpg"
                     style="width: 185px;" alt="logo">
                  
                 </div>

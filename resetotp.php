@@ -13,9 +13,9 @@
         $result1 = "UPDATE users SET status='$status' where id='$id'";
         $query1 = mysqli_query($connect, $result1);
         if($query1){
-            header('location:login.php');
+            header('location:resetpassword.php');
         }else{
-            echo "something went wrong";
+            alert( "something went wrong");
         }
        
     }

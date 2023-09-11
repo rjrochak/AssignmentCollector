@@ -53,7 +53,7 @@ session_start();
                                                 <label for="inputEmail">Email address</label>
                                             </div>
                                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                                <a class="small" href="login.php">Return to login</a>
+                                                <a class="btn btn-primary" href="login.php">Return to login</a>
                                                 <a class="btn btn-primary" href="resetotp.php" >Reset password</a>
                                             </div>
                                         </form>
