@@ -140,7 +140,7 @@ th {
                                         echo "<td>" . $result['course']."</td>";
                                         echo "<td>" . $result["addres"]."</td>";
                                         echo "<td>" . $result['pincode']."</td>";
-                                        echo '<td><img src="'.$result['file'].'" alt="img" width="50px;"></td>';
+                                        echo '<td><img src="../'.$result['file'].'" alt="img" width="50px;"></td>';
 
                                         echo '<td><a href="#?id='.$result['id'].'"> <i class="fa-solid fa-trash"></i></a>&nbsp;&nbsp;&nbsp';
 

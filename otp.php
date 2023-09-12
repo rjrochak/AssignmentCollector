@@ -15,7 +15,7 @@
         $query1 = mysqli_query($connect, $result1);
         if($query1){
 
-            header('location:login.php');
+            header('location:student/studentDashboard.php');
         }else{
             echo "something went wrong";
         }

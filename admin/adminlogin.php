@@ -74,8 +74,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>adminLogin</title>
     <link rel="stylesheet" href="css/bootstrap.css">
-    <!-- <link rel="stylesheet" href="css/style.css"> -->
-    <link rel="stylesheet" type="text/css" href="img/style.css">
+  
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <style type="text/css">

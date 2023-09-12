@@ -80,7 +80,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>studentLogin</title>
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="admin/css/bootstrap.css">
     <!-- <link rel="stylesheet" href="css/style.css"> -->
     <link rel="stylesheet" type="text/css" href="img/style.css">
  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
@@ -109,6 +109,7 @@
         }
         }
     </style>
+
 </head>
 <body>
 <section class="h-100 gradient-form" style="background-color: #eee;">

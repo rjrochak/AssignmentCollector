@@ -181,7 +181,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
 
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example90">Phone</label>
-                  <input type="number" id="form3Example90" class="form-control form-control-lg" name="phone" maxlength="6" minlength="6" Required/>
+                  <input type="number" id="form3Example90" class="form-control form-control-lg" name="phone"  Required/>
                   
                 </div>
 
@@ -209,12 +209,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
                 </div>
                   <div class="form-outline mb-4">
                     <label class="form-label" for="form3Example90">password</label>
-                  <input type="password" id="myInput" class="form-control form-control-lg"  name="password" Required />   
+                  <input type="password" id="myInput" class="form-control form-control-lg"  name="password" maxlength="8" minlength="6" Required />   
                                 
                 </div>
                   <div class="form-outline mb-4">
-                    <label class="form-label" for="form3Example90">Confire_password</label> 
-                  <input type="password" id="myInput" class="form-control form-control-lg"  name="confirem_password" Required />
+                    <label class="form-label" for="form3Example90">Confirm password</label> 
+                  <input type="password" id="myInput" class="form-control form-control-lg"  name="confirem_password" maxlength="8" minlength="6" Required />
                                   
                 </div>
                 <div class="mb-3">

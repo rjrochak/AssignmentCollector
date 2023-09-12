@@ -46,7 +46,7 @@ if(isset($_POST['submit']))
 <!DOCTYPE html>
 <html>
 <head>
-    <title>password change</title>
+    <title>password change </title>
      <style>  
         body {
             font-family: Arial, sans-serif;
@@ -57,7 +57,7 @@ if(isset($_POST['submit']))
 
         h2 {
             text-align: center;
-            color: #fff;
+            color: #000;
             text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
         }
 

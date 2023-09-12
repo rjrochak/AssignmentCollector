@@ -25,7 +25,7 @@
                                         $course =  $result['course'];
                                         $address =  $result['addres'];
                                         $pincode =  $result['pincode'];
-                                        $file =  $result['file'];
+                                        $file = "../".$result['file'];
                                        
                                        
                                     }
@@ -130,8 +130,8 @@
                          
 
                         <div class="user-photo">
-                           <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="img" width="80px;"> 
-                            <!-- <img src="<?php echo $file; ?>" alt="img" width="50px;"> -->
+                           <!-- <img src="https://cdn-icons-png.flaticon.com/512/3177/3177440.png" alt="img" width="80px;">  -->
+                             <img src="<?php echo $file; ?>" alt="img" width="50px;"> 
                         </div>
 
                         <div class="profile-info">
